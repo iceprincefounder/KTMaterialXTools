@@ -1,0 +1,1251 @@
+<?xml version="1.0"?>
+<materialx version="1.36">
+  <typedef name="closure" semantic="shader" />
+  <nodedef name="ray_switch_rgba" type="color4" node="ray_switch_rgba">
+    <input name="camera" type="color4" value="0, 0, 0, 1" />
+    <input name="shadow" type="color4" value="0, 0, 0, 1" />
+    <input name="diffuse_reflection" type="color4" value="0, 0, 0, 1" />
+    <input name="diffuse_transmission" type="color4" value="0, 0, 0, 1" />
+    <input name="specular_reflection" type="color4" value="0, 0, 0, 1" />
+    <input name="specular_transmission" type="color4" value="0, 0, 0, 1" />
+    <input name="volume" type="color4" value="0, 0, 0, 1" />
+  </nodedef>
+  <nodedef name="ray_switch_shader" type="closure" node="ray_switch_shader">
+    <input name="camera" type="closure" />
+    <input name="shadow" type="closure" />
+    <input name="diffuse_reflection" type="closure" />
+    <input name="diffuse_transmission" type="closure" />
+    <input name="specular_reflection" type="closure" />
+    <input name="specular_transmission" type="closure" />
+    <input name="volume" type="closure" />
+  </nodedef>
+  <nodedef name="image" type="color4" node="image">
+    <input name="filename" type="string" value="" />
+    <input name="color_space" type="string" value="auto" />
+    <input name="filter" type="string" value="smart_bicubic" />
+    <input name="mipmap_bias" type="integer" value="0" />
+    <input name="single_channel" type="boolean" value="false" />
+    <input name="start_channel" type="integer" value="0" />
+    <input name="swrap" type="string" value="periodic" />
+    <input name="twrap" type="string" value="periodic" />
+    <input name="sscale" type="float" value="1" />
+    <input name="tscale" type="float" value="1" />
+    <input name="sflip" type="boolean" value="false" />
+    <input name="tflip" type="boolean" value="false" />
+    <input name="soffset" type="float" value="0" />
+    <input name="toffset" type="float" value="0" />
+    <input name="swap_st" type="boolean" value="false" />
+    <input name="uvcoords" type="vector2" value="0, 0" />
+    <input name="uvset" type="string" value="" />
+    <input name="multiply" type="color3" value="1, 1, 1" />
+    <input name="offset" type="color3" value="0, 0, 0" />
+    <input name="ignore_missing_textures" type="boolean" value="false" />
+    <input name="missing_texture_color" type="color4" value="0, 0, 0, 0" />
+  </nodedef>
+  <nodedef name="noise" type="color3" node="noise">
+    <input name="octaves" type="integer" value="1" />
+    <input name="distortion" type="float" value="0" />
+    <input name="lacunarity" type="float" value="1.92" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="scale" type="vector3" value="1, 1, 1" />
+    <input name="offset" type="vector3" value="0, 0, 0" />
+    <input name="coord_space" type="string" value="object" />
+    <input name="pref_name" type="string" value="Pref" />
+    <input name="P" type="vector3" value="0, 0, 0" />
+    <input name="time" type="float" value="0" />
+    <input name="color1" type="color3" value="0, 0, 0" />
+    <input name="color2" type="color3" value="1, 1, 1" />
+    <input name="mode" type="string" value="scalar" />
+  </nodedef>
+  <nodedef name="cell_noise" type="color3" node="cell_noise">
+    <input name="pattern" type="string" value="noise1" />
+    <input name="additive" type="boolean" value="true" />
+    <input name="octaves" type="integer" value="1" />
+    <input name="randomness" type="float" value="1" />
+    <input name="lacunarity" type="float" value="1.92" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="scale" type="vector3" value="1, 1, 1" />
+    <input name="offset" type="vector3" value="0, 0, 0" />
+    <input name="coord_space" type="string" value="object" />
+    <input name="pref_name" type="string" value="Pref" />
+    <input name="P" type="vector3" value="0, 0, 0" />
+    <input name="time" type="float" value="0" />
+    <input name="color" type="color3" value="1, 1, 1" />
+    <input name="palette" type="color3" value="1, 1, 1" />
+    <input name="density" type="float" value="0.5" />
+  </nodedef>
+  <nodedef name="utility" type="color3" node="utility">
+    <input name="color_mode" type="string" value="color" />
+    <input name="shade_mode" type="string" value="ndoteye" />
+    <input name="overlay_mode" type="string" value="none" />
+    <input name="color" type="color3" value="1, 1, 1" />
+    <input name="ao_distance" type="float" value="100" />
+    <input name="roughness" type="float" value="0.2" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="wireframe" type="color3" node="wireframe">
+    <input name="line_width" type="float" value="1" />
+    <input name="fill_color" type="color3" value="1, 1, 1" />
+    <input name="line_color" type="color3" value="0, 0, 0" />
+    <input name="raster_space" type="boolean" value="true" />
+    <input name="edge_type" type="string" value="triangles" />
+  </nodedef>
+  <nodedef name="motion_vector" type="color3" node="motion_vector">
+    <input name="raw" type="boolean" value="false" />
+    <input name="time0" type="float" value="0" />
+    <input name="time1" type="float" value="1" />
+    <input name="max_displace" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ambient_occlusion" type="color3" node="ambient_occlusion">
+    <input name="samples" type="integer" value="3" />
+    <input name="spread" type="float" value="1" />
+    <input name="near_clip" type="float" value="0" />
+    <input name="far_clip" type="float" value="100" />
+    <input name="falloff" type="float" value="0" />
+    <input name="black" type="color3" value="0, 0, 0" />
+    <input name="white" type="color3" value="1, 1, 1" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="invert_normals" type="boolean" value="false" />
+    <input name="trace_set" type="string" value="" />
+    <input name="inclusive" type="boolean" value="true" />
+    <input name="self_only" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="round_corners" type="vector3" node="round_corners">
+    <input name="samples" type="integer" value="6" />
+    <input name="radius" type="float" value="1" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="trace_set" type="string" value="" />
+    <input name="inclusive" type="boolean" value="true" />
+    <input name="self_only" type="boolean" value="false" />
+    <input name="object_space" type="boolean" value="true" />
+  </nodedef>
+  <nodedef name="flat" type="color3" node="flat">
+    <input name="color" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="toon" type="color3" node="toon">
+    <input name="mask_color" type="color3" value="0, 0, 0" />
+    <input name="edge_color" type="color3" value="0, 0, 0" />
+    <input name="edge_tonemap" type="color3" value="1, 1, 1" />
+    <input name="edge_opacity" type="float" value="1" />
+    <input name="edge_width_scale" type="float" value="1" />
+    <input name="silhouette_color" type="color3" value="0, 0, 0" />
+    <input name="silhouette_tonemap" type="color3" value="1, 1, 1" />
+    <input name="silhouette_opacity" type="float" value="1" />
+    <input name="silhouette_width_scale" type="float" value="1" />
+    <input name="priority" type="integer" value="0" />
+    <input name="enable_silhouette" type="boolean" value="false" />
+    <input name="ignore_throughput" type="boolean" value="false" />
+    <input name="enable" type="boolean" value="true" />
+    <input name="id_difference" type="boolean" value="true" />
+    <input name="shader_difference" type="boolean" value="true" />
+    <input name="uv_threshold" type="float" value="0" />
+    <input name="angle_threshold" type="float" value="180" />
+    <input name="normal_type" type="string" value="shading normal" />
+    <input name="base" type="float" value="0.8" />
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="base_tonemap" type="color3" value="1, 1, 1" />
+    <input name="specular" type="float" value="0" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_roughness" type="float" value="0" />
+    <input name="specular_anisotropy" type="float" value="0" />
+    <input name="specular_rotation" type="float" value="0" />
+    <input name="specular_tonemap" type="color3" value="1, 1, 1" />
+    <input name="lights" type="string" value="" />
+    <input name="highlight_color" type="color3" value="1, 1, 1" />
+    <input name="highlight_size" type="float" value="0.5" />
+    <input name="aov_highlight" type="string" value="highlight" />
+    <input name="rim_light" type="string" value="" />
+    <input name="rim_light_color" type="color3" value="0, 0, 0" />
+    <input name="rim_light_width" type="float" value="1" />
+    <input name="aov_rim_light" type="string" value="rim_light" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1, 1, 1" />
+    <input name="transmission_roughness" type="float" value="0" />
+    <input name="transmission_anisotropy" type="float" value="0" />
+    <input name="transmission_rotation" type="float" value="0" />
+    <input name="sheen" type="float" value="0" />
+    <input name="sheen_color" type="color3" value="1, 1, 1" />
+    <input name="sheen_roughness" type="float" value="0.3" />
+    <input name="emission" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="IOR" type="float" value="1.52" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="tangent" type="vector3" value="0, 0, 0" />
+    <input name="indirect_diffuse" type="float" value="0" />
+    <input name="indirect_specular" type="float" value="1" />
+    <input name="bump_mode" type="string" value="both" />
+    <input name="energy_conserving" type="boolean" value="true" />
+    <input name="user_id" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="lambert" type="closure" node="lambert">
+    <input name="Kd" type="float" value="0.7" />
+    <input name="Kd_color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="standard" type="closure" node="standard">
+    <input name="Kd" type="float" value="0.7" />
+    <input name="Kd_color" type="color3" value="1, 1, 1" />
+    <input name="diffuse_roughness" type="float" value="0" />
+    <input name="Ks" type="float" value="0" />
+    <input name="Ks_color" type="color3" value="1, 1, 1" />
+    <input name="specular_roughness" type="float" value="0.466905" />
+    <input name="specular_anisotropy" type="float" value="0.5" />
+    <input name="specular_rotation" type="float" value="0" />
+    <input name="specular_distribution" type="string" value="ggx" />
+    <input name="Kr" type="float" value="0" />
+    <input name="Kr_color" type="color3" value="1, 1, 1" />
+    <input name="reflection_exit_color" type="color3" value="0, 0, 0" />
+    <input name="reflection_exit_use_environment" type="boolean" value="false" />
+    <input name="Kt" type="float" value="0" />
+    <input name="Kt_color" type="color3" value="1, 1, 1" />
+    <input name="transmittance" type="color3" value="1, 1, 1" />
+    <input name="refraction_roughness" type="float" value="0" />
+    <input name="refraction_exit_color" type="color3" value="0, 0, 0" />
+    <input name="refraction_exit_use_environment" type="boolean" value="false" />
+    <input name="IOR" type="float" value="1" />
+    <input name="dispersion_abbe" type="float" value="0" />
+    <input name="Kb" type="float" value="0" />
+    <input name="Fresnel" type="boolean" value="false" />
+    <input name="Krn" type="float" value="0" />
+    <input name="specular_Fresnel" type="boolean" value="false" />
+    <input name="Ksn" type="float" value="0" />
+    <input name="Fresnel_use_IOR" type="boolean" value="false" />
+    <input name="Fresnel_affect_diff" type="boolean" value="true" />
+    <input name="emission" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="direct_specular" type="float" value="1" />
+    <input name="indirect_specular" type="float" value="1" />
+    <input name="direct_diffuse" type="float" value="1" />
+    <input name="indirect_diffuse" type="float" value="1" />
+    <input name="enable_glossy_caustics" type="boolean" value="false" />
+    <input name="enable_reflective_caustics" type="boolean" value="false" />
+    <input name="enable_refractive_caustics" type="boolean" value="false" />
+    <input name="enable_internal_reflections" type="boolean" value="true" />
+    <input name="Ksss" type="float" value="0" />
+    <input name="Ksss_color" type="color3" value="1, 1, 1" />
+    <input name="sss_radius" type="color3" value="0.1, 0.1, 0.1" />
+    <input name="bounce_factor" type="float" value="1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="standard_surface" type="closure" node="standard_surface">
+    <input name="base" type="float" value="0.8" />
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="diffuse_roughness" type="float" value="0" />
+    <input name="specular" type="float" value="1" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_roughness" type="float" value="0.1" />
+    <input name="specular_IOR" type="float" value="1.52" />
+    <input name="specular_anisotropy" type="float" value="0" />
+    <input name="specular_rotation" type="float" value="0" />
+    <input name="metalness" type="float" value="0" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1, 1, 1" />
+    <input name="transmission_depth" type="float" value="0" />
+    <input name="transmission_scatter" type="color3" value="0, 0, 0" />
+    <input name="transmission_scatter_anisotropy" type="float" value="0" />
+    <input name="transmission_dispersion" type="float" value="0" />
+    <input name="transmission_extra_roughness" type="float" value="0" />
+    <input name="transmit_aovs" type="boolean" value="false" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" />
+    <input name="subsurface_radius" type="color3" value="1, 1, 1" />
+    <input name="subsurface_scale" type="float" value="1" />
+    <input name="subsurface_anisotropy" type="float" value="0" />
+    <input name="subsurface_type" type="string" value="diffusion" />
+    <input name="sheen" type="float" value="0" />
+    <input name="sheen_color" type="color3" value="1, 1, 1" />
+    <input name="sheen_roughness" type="float" value="0.3" />
+    <input name="thin_walled" type="boolean" value="false" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="tangent" type="vector3" value="0, 0, 0" />
+    <input name="coat" type="float" value="0" />
+    <input name="coat_color" type="color3" value="1, 1, 1" />
+    <input name="coat_roughness" type="float" value="0.1" />
+    <input name="coat_IOR" type="float" value="1.5" />
+    <input name="coat_normal" type="vector3" value="0, 0, 0" />
+    <input name="coat_affect_color" type="float" value="0" />
+    <input name="coat_affect_roughness" type="float" value="0" />
+    <input name="thin_film_thickness" type="float" value="0" />
+    <input name="thin_film_IOR" type="float" value="1.5" />
+    <input name="emission" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="caustics" type="boolean" value="false" />
+    <input name="internal_reflections" type="boolean" value="true" />
+    <input name="exit_to_background" type="boolean" value="false" />
+    <input name="indirect_diffuse" type="float" value="1" />
+    <input name="indirect_specular" type="float" value="1" />
+    <input name="aov_id1" type="string" value="" />
+    <input name="id1" type="color3" value="0, 0, 0" />
+    <input name="aov_id2" type="string" value="" />
+    <input name="id2" type="color3" value="0, 0, 0" />
+    <input name="aov_id3" type="string" value="" />
+    <input name="id3" type="color3" value="0, 0, 0" />
+    <input name="aov_id4" type="string" value="" />
+    <input name="id4" type="color3" value="0, 0, 0" />
+    <input name="aov_id5" type="string" value="" />
+    <input name="id5" type="color3" value="0, 0, 0" />
+    <input name="aov_id6" type="string" value="" />
+    <input name="id6" type="color3" value="0, 0, 0" />
+    <input name="aov_id7" type="string" value="" />
+    <input name="id7" type="color3" value="0, 0, 0" />
+    <input name="aov_id8" type="string" value="" />
+    <input name="id8" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="hair" type="closure" node="hair">
+    <input name="rootcolor" type="color3" value="0.1, 0.1, 0.1" />
+    <input name="tipcolor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="ambdiff" type="float" value="0.6" />
+    <input name="spec" type="float" value="1" />
+    <input name="spec_color" type="color3" value="1, 1, 1" />
+    <input name="spec_shift" type="float" value="0" />
+    <input name="spec_gloss" type="float" value="10" />
+    <input name="spec2" type="float" value="0" />
+    <input name="spec2_color" type="color3" value="1, 0.4, 0.1" />
+    <input name="spec2_shift" type="float" value="0" />
+    <input name="spec2_gloss" type="float" value="7" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1, 0.4, 0.1" />
+    <input name="transmission_spread" type="float" value="1" />
+    <input name="kd_ind" type="float" value="0" />
+  </nodedef>
+  <nodedef name="standard_hair" type="closure" node="standard_hair">
+    <input name="base" type="float" value="1" />
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="melanin" type="float" value="1" />
+    <input name="melanin_redness" type="float" value="0.5" />
+    <input name="melanin_randomize" type="float" value="0" />
+    <input name="roughness" type="float" value="0.2" />
+    <input name="ior" type="float" value="1.55" />
+    <input name="shift" type="float" value="3" />
+    <input name="specular_tint" type="color3" value="1, 1, 1" />
+    <input name="specular2_tint" type="color3" value="1, 1, 1" />
+    <input name="transmission_tint" type="color3" value="1, 1, 1" />
+    <input name="diffuse" type="float" value="0" />
+    <input name="diffuse_color" type="color3" value="1, 1, 1" />
+    <input name="emission" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="indirect_diffuse" type="float" value="1" />
+    <input name="indirect_specular" type="float" value="1" />
+    <input name="extra_depth" type="integer" value="16" />
+    <input name="extra_samples" type="integer" value="0" />
+    <input name="aov_id1" type="string" value="" />
+    <input name="id1" type="color3" value="0, 0, 0" />
+    <input name="aov_id2" type="string" value="" />
+    <input name="id2" type="color3" value="0, 0, 0" />
+    <input name="aov_id3" type="string" value="" />
+    <input name="id3" type="color3" value="0, 0, 0" />
+    <input name="aov_id4" type="string" value="" />
+    <input name="id4" type="color3" value="0, 0, 0" />
+    <input name="aov_id5" type="string" value="" />
+    <input name="id5" type="color3" value="0, 0, 0" />
+    <input name="aov_id6" type="string" value="" />
+    <input name="id6" type="color3" value="0, 0, 0" />
+    <input name="aov_id7" type="string" value="" />
+    <input name="id7" type="color3" value="0, 0, 0" />
+    <input name="aov_id8" type="string" value="" />
+    <input name="id8" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="car_paint" type="closure" node="car_paint">
+    <input name="base" type="float" value="0.8" />
+    <input name="base_color" type="color3" value="1, 0, 0" />
+    <input name="base_roughness" type="float" value="0.5" />
+    <input name="specular" type="float" value="1" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_flip_flop" type="color3" value="1, 1, 1" />
+    <input name="specular_light_facing" type="color3" value="1, 1, 1" />
+    <input name="specular_falloff" type="float" value="1" />
+    <input name="specular_roughness" type="float" value="0.05" />
+    <input name="specular_IOR" type="float" value="1.52" />
+    <input name="transmission_color" type="color3" value="1, 1, 1" />
+    <input name="flake_color" type="color3" value="1, 1, 1" />
+    <input name="flake_flip_flop" type="color3" value="1, 1, 1" />
+    <input name="flake_light_facing" type="color3" value="1, 1, 1" />
+    <input name="flake_falloff" type="float" value="1" />
+    <input name="flake_roughness" type="float" value="0.4" />
+    <input name="flake_IOR" type="float" value="100" />
+    <input name="flake_scale" type="float" value="0.001" />
+    <input name="flake_density" type="float" value="0" />
+    <input name="flake_layers" type="integer" value="1" />
+    <input name="flake_normal_randomize" type="float" value="0.5" />
+    <input name="flake_coord_space" type="string" value="Pref" />
+    <input name="pref_name" type="string" value="Pref" />
+    <input name="coat" type="float" value="1" />
+    <input name="coat_color" type="color3" value="1, 1, 1" />
+    <input name="coat_roughness" type="float" value="0" />
+    <input name="coat_IOR" type="float" value="1.5" />
+    <input name="coat_normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="bump2d" type="vector3" node="bump2d">
+    <input name="bump_map" type="float" value="0" />
+    <input name="bump_height" type="float" value="1" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="bump3d" type="vector3" node="bump3d">
+    <input name="bump_map" type="float" value="0" />
+    <input name="bump_height" type="float" value="1" />
+    <input name="epsilon" type="float" value="1e-05" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="mix_shader" type="closure" node="mix_shader">
+    <input name="mode" type="string" value="blend" />
+    <input name="mix" type="float" value="0.5" />
+    <input name="shader1" type="closure" />
+    <input name="shader2" type="closure" />
+  </nodedef>
+  <nodedef name="sky" type="closure" node="sky">
+    <input name="color" type="color3" value="1, 1, 1" />
+    <input name="intensity" type="float" value="1" />
+    <input name="visibility" type="integer" value="1065353471" />
+    <input name="opaque_alpha" type="boolean" value="true" />
+    <input name="format" type="string" value="angular" />
+    <input name="X_angle" type="float" value="0" />
+    <input name="Y_angle" type="float" value="0" />
+    <input name="Z_angle" type="float" value="0" />
+    <input name="X" type="vector3" value="1, 0, 0" />
+    <input name="Y" type="vector3" value="0, 1, 0" />
+    <input name="Z" type="vector3" value="0, 0, 1" />
+  </nodedef>
+  <nodedef name="physical_sky" type="color4" node="physical_sky">
+    <input name="turbidity" type="float" value="3" />
+    <input name="ground_albedo" type="color3" value="0.1, 0.1, 0.1" />
+    <input name="use_degrees" type="boolean" value="true" />
+    <input name="elevation" type="float" value="45" />
+    <input name="azimuth" type="float" value="90" />
+    <input name="sun_direction" type="vector3" value="0, 1, 0" />
+    <input name="enable_sun" type="boolean" value="true" />
+    <input name="sun_size" type="float" value="0.51" />
+    <input name="sun_tint" type="color3" value="1, 1, 1" />
+    <input name="sky_tint" type="color3" value="1, 1, 1" />
+    <input name="intensity" type="float" value="1" />
+    <input name="X" type="vector3" value="1, 0, 0" />
+    <input name="Y" type="vector3" value="0, 1, 0" />
+    <input name="Z" type="vector3" value="0, 0, 1" />
+  </nodedef>
+  <nodedef name="atmosphere_volume" type="closure" node="atmosphere_volume">
+    <input name="density" type="float" value="0" />
+    <input name="samples" type="integer" value="5" />
+    <input name="eccentricity" type="float" value="0" />
+    <input name="attenuation" type="float" value="0" />
+    <input name="affect_camera" type="float" value="1" />
+    <input name="affect_diffuse" type="float" value="0" />
+    <input name="affect_specular" type="float" value="1" />
+    <input name="rgb_density" type="color3" value="1, 1, 1" />
+    <input name="rgb_attenuation" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="fog" type="closure" node="fog">
+    <input name="distance" type="float" value="0.02" />
+    <input name="height" type="float" value="5" />
+    <input name="color" type="color3" value="1, 1, 1" />
+    <input name="ground_point" type="vector3" value="0, 0, 0" />
+    <input name="ground_normal" type="vector3" value="0, 0, 1" />
+  </nodedef>
+  <nodedef name="standard_volume" type="closure" node="standard_volume">
+    <input name="density" type="float" value="1" />
+    <input name="density_channel" type="string" value="density" />
+    <input name="scatter" type="float" value="1" />
+    <input name="scatter_color" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="scatter_color_channel" type="string" value="" />
+    <input name="scatter_anisotropy" type="float" value="0" />
+    <input name="transparent" type="color3" value="0.367879, 0.367879, 0.367879" />
+    <input name="transparent_depth" type="float" value="1" />
+    <input name="transparent_channel" type="string" value="" />
+    <input name="emission_mode" type="string" value="blackbody" />
+    <input name="emission" type="float" value="1" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="emission_channel" type="string" value="heat" />
+    <input name="temperature" type="float" value="1" />
+    <input name="temperature_channel" type="string" value="temperature" />
+    <input name="blackbody_kelvin" type="float" value="5000" />
+    <input name="blackbody_intensity" type="float" value="1" />
+    <input name="displacement" type="vector3" value="0, 0, 0" />
+    <input name="interpolation" type="string" value="trilinear" />
+  </nodedef>
+  <nodedef name="abs" type="color3" node="abs">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="add" type="color3" node="add">
+    <input name="input1" type="color3" value="0, 0, 0" />
+    <input name="input2" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="aov_write_float" type="closure" node="aov_write_float">
+    <input name="passthrough" type="closure" />
+    <input name="aov_input" type="float" value="0" />
+    <input name="aov_name" type="string" value="" />
+    <input name="blend_opacity" type="boolean" value="true" />
+  </nodedef>
+  <nodedef name="aov_write_int" type="closure" node="aov_write_int">
+    <input name="passthrough" type="closure" />
+    <input name="aov_input" type="integer" value="0" />
+    <input name="aov_name" type="string" value="" />
+  </nodedef>
+  <nodedef name="aov_write_rgb" type="closure" node="aov_write_rgb">
+    <input name="passthrough" type="closure" />
+    <input name="aov_input" type="color3" value="0, 0, 0" />
+    <input name="aov_name" type="string" value="" />
+    <input name="blend_opacity" type="boolean" value="true" />
+  </nodedef>
+  <nodedef name="aov_write_rgba" type="closure" node="aov_write_rgba">
+    <input name="passthrough" type="closure" />
+    <input name="aov_input" type="color4" value="0, 0, 0, 0" />
+    <input name="aov_name" type="string" value="" />
+    <input name="blend_opacity" type="boolean" value="true" />
+  </nodedef>
+  <nodedef name="atan" type="color3" node="atan">
+    <input name="y" type="color3" value="0, 0, 0" />
+    <input name="x" type="color3" value="0, 0, 0" />
+    <input name="units" type="string" value="radians" />
+  </nodedef>
+  <nodedef name="blackbody" type="color4" node="blackbody">
+    <input name="temperature" type="float" value="6500" />
+    <input name="normalize" type="boolean" value="false" />
+    <input name="intensity" type="float" value="1" />
+  </nodedef>
+  <nodedef name="cache" type="color3" node="cache">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="camera_projection" type="color4" node="camera_projection">
+    <input name="projection_color" type="color4" value="1, 1, 1, 1" />
+    <input name="offscreen_color" type="color4" value="0, 0, 0, 0" />
+    <input name="mask" type="float" value="1" />
+    <input name="camera" type="string" />
+    <input name="aspect_ratio" type="float" value="1.333" />
+    <input name="front_facing" type="boolean" value="true" />
+    <input name="back_facing" type="boolean" value="true" />
+    <input name="use_shading_normal" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="checkerboard" type="color3" node="checkerboard">
+    <input name="color1" type="color3" value="1, 1, 1" />
+    <input name="color2" type="color3" value="0, 0, 0" />
+    <input name="u_frequency" type="float" value="1" />
+    <input name="v_frequency" type="float" value="1" />
+    <input name="u_offset" type="float" value="0" />
+    <input name="v_offset" type="float" value="0" />
+    <input name="contrast" type="float" value="1" />
+    <input name="filter_strength" type="float" value="1" />
+    <input name="filter_offset" type="float" value="0" />
+    <input name="uvset" type="string" value="" />
+  </nodedef>
+  <nodedef name="clamp" type="color3" node="clamp">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="mode" type="string" value="scalar" />
+    <input name="min" type="float" value="0" />
+    <input name="max" type="float" value="1" />
+    <input name="min_color" type="color3" value="0, 0, 0" />
+    <input name="max_color" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="color_convert" type="color3" node="color_convert">
+    <input name="input" type="color3" value="1, 1, 1" />
+    <input name="from" type="string" value="RGB" />
+    <input name="to" type="string" value="HSV" />
+  </nodedef>
+  <nodedef name="color_correct" type="color4" node="color_correct">
+    <input name="input" type="color4" value="0, 0, 0, 1" />
+    <input name="alpha_is_luminance" type="boolean" value="false" />
+    <input name="alpha_multiply" type="float" value="1" />
+    <input name="alpha_add" type="float" value="0" />
+    <input name="invert" type="boolean" value="false" />
+    <input name="invert_alpha" type="boolean" value="false" />
+    <input name="gamma" type="float" value="1" />
+    <input name="hue_shift" type="float" value="0" />
+    <input name="saturation" type="float" value="1" />
+    <input name="contrast" type="float" value="1" />
+    <input name="contrast_pivot" type="float" value="0.18" />
+    <input name="exposure" type="float" value="0" />
+    <input name="multiply" type="color3" value="1, 1, 1" />
+    <input name="add" type="color3" value="0, 0, 0" />
+    <input name="mask" type="float" value="1" />
+  </nodedef>
+  <nodedef name="color_jitter" type="color4" node="color_jitter">
+    <input name="input" type="color3" value="1, 1, 1" />
+    <input name="data_input" type="integer" value="0" />
+    <input name="data_gain_min" type="float" value="0" />
+    <input name="data_gain_max" type="float" value="0" />
+    <input name="data_hue_min" type="float" value="0" />
+    <input name="data_hue_max" type="float" value="0" />
+    <input name="data_saturation_min" type="float" value="0" />
+    <input name="data_saturation_max" type="float" value="0" />
+    <input name="data_seed" type="integer" value="0" />
+    <input name="proc_gain_min" type="float" value="0" />
+    <input name="proc_gain_max" type="float" value="0" />
+    <input name="proc_hue_min" type="float" value="0" />
+    <input name="proc_hue_max" type="float" value="0" />
+    <input name="proc_saturation_min" type="float" value="0" />
+    <input name="proc_saturation_max" type="float" value="0" />
+    <input name="proc_seed" type="integer" value="0" />
+    <input name="obj_gain_min" type="float" value="0" />
+    <input name="obj_gain_max" type="float" value="0" />
+    <input name="obj_hue_min" type="float" value="0" />
+    <input name="obj_hue_max" type="float" value="0" />
+    <input name="obj_saturation_min" type="float" value="0" />
+    <input name="obj_saturation_max" type="float" value="0" />
+    <input name="obj_seed" type="integer" value="0" />
+    <input name="face_gain_min" type="float" value="0" />
+    <input name="face_gain_max" type="float" value="0" />
+    <input name="face_hue_min" type="float" value="0" />
+    <input name="face_hue_max" type="float" value="0" />
+    <input name="face_saturation_min" type="float" value="0" />
+    <input name="face_saturation_max" type="float" value="0" />
+    <input name="face_seed" type="integer" value="0" />
+    <input name="face_mode" type="string" value="face id" />
+  </nodedef>
+  <nodedef name="compare" type="boolean" node="compare">
+    <input name="test" type="string" value="==" />
+    <input name="input1" type="float" value="0" />
+    <input name="input2" type="float" value="0" />
+  </nodedef>
+  <nodedef name="complement" type="color3" node="complement">
+    <input name="input" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="complex_ior" type="color3" node="complex_ior">
+    <input name="material" type="string" value="custom" />
+    <input name="mode" type="string" value="artistic" />
+    <input name="reflectivity" type="color3" value="0.925952, 0.720887, 0.504154" />
+    <input name="edgetint" type="color3" value="0.995524, 0.957415, 0.822776" />
+    <input name="n" type="vector3" value="0.27105, 0.67693, 1.3164" />
+    <input name="k" type="vector3" value="3.6092, 2.6247, 2.2921" />
+  </nodedef>
+  <nodedef name="composite" type="color4" node="composite">
+    <input name="A" type="color4" value="1, 0, 0, 1" />
+    <input name="B" type="color4" value="0, 1, 0, 1" />
+    <input name="operation" type="string" value="over" />
+    <input name="alpha_operation" type="string" value="same" />
+  </nodedef>
+  <nodedef name="cross" type="vector3" node="cross">
+    <input name="input1" type="vector3" value="1, 1, 1" />
+    <input name="input2" type="vector3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="curvature" type="color3" node="curvature">
+    <input name="output" type="string" value="convex" />
+    <input name="samples" type="integer" value="3" />
+    <input name="radius" type="float" value="0.1" />
+    <input name="spread" type="float" value="1" />
+    <input name="threshold" type="float" value="0" />
+    <input name="bias" type="float" value="0.5" />
+    <input name="multiply" type="float" value="1" />
+    <input name="trace_set" type="string" value="" />
+    <input name="inclusive" type="boolean" value="true" />
+    <input name="self_only" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="divide" type="color3" node="divide">
+    <input name="input1" type="color3" value="1, 1, 1" />
+    <input name="input2" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="dot" type="float" node="dot">
+    <input name="input1" type="vector3" value="1, 1, 1" />
+    <input name="input2" type="vector3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="exp" type="color3" node="exp">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="facing_ratio" type="float" node="facing_ratio">
+    <input name="bias" type="float" value="0.5" />
+    <input name="gain" type="float" value="0.5" />
+    <input name="linear" type="boolean" value="false" />
+    <input name="invert" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="flakes" type="color4" node="flakes">
+    <input name="scale" type="float" value="0.1" />
+    <input name="density" type="float" value="0.5" />
+    <input name="step" type="float" value="0" />
+    <input name="depth" type="float" value="0" />
+    <input name="IOR" type="float" value="1.52" />
+    <input name="normal_randomize" type="float" value="0.5" />
+    <input name="coord_space" type="string" value="Pref" />
+    <input name="pref_name" type="string" value="Pref" />
+    <input name="output_space" type="string" value="world" />
+  </nodedef>
+  <nodedef name="float_to_int" type="integer" node="float_to_int">
+    <input name="input" type="float" value="0" />
+    <input name="mode" type="string" value="round" />
+  </nodedef>
+  <nodedef name="float_to_matrix" type="matrix44" node="float_to_matrix">
+    <input name="input_00" type="float" value="1" />
+    <input name="input_01" type="float" value="0" />
+    <input name="input_02" type="float" value="0" />
+    <input name="input_03" type="float" value="0" />
+    <input name="input_10" type="float" value="0" />
+    <input name="input_11" type="float" value="1" />
+    <input name="input_12" type="float" value="0" />
+    <input name="input_13" type="float" value="0" />
+    <input name="input_20" type="float" value="0" />
+    <input name="input_21" type="float" value="0" />
+    <input name="input_22" type="float" value="1" />
+    <input name="input_23" type="float" value="0" />
+    <input name="input_30" type="float" value="0" />
+    <input name="input_31" type="float" value="0" />
+    <input name="input_32" type="float" value="0" />
+    <input name="input_33" type="float" value="1" />
+  </nodedef>
+  <nodedef name="float_to_rgba" type="color4" node="float_to_rgba">
+    <input name="r" type="float" value="0" />
+    <input name="g" type="float" value="0" />
+    <input name="b" type="float" value="0" />
+    <input name="a" type="float" value="1" />
+  </nodedef>
+  <nodedef name="float_to_rgb" type="color3" node="float_to_rgb">
+    <input name="r" type="float" value="0" />
+    <input name="g" type="float" value="0" />
+    <input name="b" type="float" value="0" />
+  </nodedef>
+  <nodedef name="fraction" type="color3" node="fraction">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="is_finite" type="boolean" node="is_finite">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="layer_float" type="float" node="layer_float">
+    <input name="enable1" type="boolean" value="true" />
+    <input name="name1" type="string" value="layer1" />
+    <input name="input1" type="float" value="0" />
+    <input name="mix1" type="float" value="1" />
+    <input name="enable2" type="boolean" value="true" />
+    <input name="name2" type="string" value="layer2" />
+    <input name="input2" type="float" value="0" />
+    <input name="mix2" type="float" value="0" />
+    <input name="enable3" type="boolean" value="true" />
+    <input name="name3" type="string" value="layer3" />
+    <input name="input3" type="float" value="0" />
+    <input name="mix3" type="float" value="0" />
+    <input name="enable4" type="boolean" value="true" />
+    <input name="name4" type="string" value="layer4" />
+    <input name="input4" type="float" value="0" />
+    <input name="mix4" type="float" value="0" />
+    <input name="enable5" type="boolean" value="true" />
+    <input name="name5" type="string" value="layer5" />
+    <input name="input5" type="float" value="0" />
+    <input name="mix5" type="float" value="0" />
+    <input name="enable6" type="boolean" value="true" />
+    <input name="name6" type="string" value="layer6" />
+    <input name="input6" type="float" value="0" />
+    <input name="mix6" type="float" value="0" />
+    <input name="enable7" type="boolean" value="true" />
+    <input name="name7" type="string" value="layer7" />
+    <input name="input7" type="float" value="0" />
+    <input name="mix7" type="float" value="0" />
+    <input name="enable8" type="boolean" value="true" />
+    <input name="name8" type="string" value="layer8" />
+    <input name="input8" type="float" value="0" />
+    <input name="mix8" type="float" value="0" />
+  </nodedef>
+  <nodedef name="layer_rgba" type="color4" node="layer_rgba">
+    <input name="enable1" type="boolean" value="true" />
+    <input name="name1" type="string" value="layer1" />
+    <input name="input1" type="color4" value="0, 0, 0, 0" />
+    <input name="mix1" type="float" value="1" />
+    <input name="operation1" type="string" value="over" />
+    <input name="alpha_operation1" type="string" value="result" />
+    <input name="enable2" type="boolean" value="true" />
+    <input name="name2" type="string" value="layer2" />
+    <input name="input2" type="color4" value="0, 0, 0, 0" />
+    <input name="mix2" type="float" value="1" />
+    <input name="operation2" type="string" value="over" />
+    <input name="alpha_operation2" type="string" value="result" />
+    <input name="enable3" type="boolean" value="true" />
+    <input name="name3" type="string" value="layer3" />
+    <input name="input3" type="color4" value="0, 0, 0, 0" />
+    <input name="mix3" type="float" value="1" />
+    <input name="operation3" type="string" value="over" />
+    <input name="alpha_operation3" type="string" value="result" />
+    <input name="enable4" type="boolean" value="true" />
+    <input name="name4" type="string" value="layer4" />
+    <input name="input4" type="color4" value="0, 0, 0, 0" />
+    <input name="mix4" type="float" value="1" />
+    <input name="operation4" type="string" value="over" />
+    <input name="alpha_operation4" type="string" value="result" />
+    <input name="enable5" type="boolean" value="true" />
+    <input name="name5" type="string" value="layer5" />
+    <input name="input5" type="color4" value="0, 0, 0, 0" />
+    <input name="mix5" type="float" value="1" />
+    <input name="operation5" type="string" value="over" />
+    <input name="alpha_operation5" type="string" value="result" />
+    <input name="enable6" type="boolean" value="true" />
+    <input name="name6" type="string" value="layer6" />
+    <input name="input6" type="color4" value="0, 0, 0, 0" />
+    <input name="mix6" type="float" value="1" />
+    <input name="operation6" type="string" value="over" />
+    <input name="alpha_operation6" type="string" value="result" />
+    <input name="enable7" type="boolean" value="true" />
+    <input name="name7" type="string" value="layer7" />
+    <input name="input7" type="color4" value="0, 0, 0, 0" />
+    <input name="mix7" type="float" value="1" />
+    <input name="operation7" type="string" value="over" />
+    <input name="alpha_operation7" type="string" value="result" />
+    <input name="enable8" type="boolean" value="true" />
+    <input name="name8" type="string" value="layer8" />
+    <input name="input8" type="color4" value="0, 0, 0, 0" />
+    <input name="mix8" type="float" value="1" />
+    <input name="operation8" type="string" value="over" />
+    <input name="alpha_operation8" type="string" value="result" />
+    <input name="clamp" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="layer_shader" type="closure" node="layer_shader">
+    <input name="enable1" type="boolean" value="true" />
+    <input name="name1" type="string" value="layer1" />
+    <input name="input1" type="closure" />
+    <input name="mix1" type="float" value="1" />
+    <input name="enable2" type="boolean" value="true" />
+    <input name="name2" type="string" value="layer2" />
+    <input name="input2" type="closure" />
+    <input name="mix2" type="float" value="1" />
+    <input name="enable3" type="boolean" value="true" />
+    <input name="name3" type="string" value="layer3" />
+    <input name="input3" type="closure" />
+    <input name="mix3" type="float" value="1" />
+    <input name="enable4" type="boolean" value="true" />
+    <input name="name4" type="string" value="layer4" />
+    <input name="input4" type="closure" />
+    <input name="mix4" type="float" value="1" />
+    <input name="enable5" type="boolean" value="true" />
+    <input name="name5" type="string" value="layer5" />
+    <input name="input5" type="closure" />
+    <input name="mix5" type="float" value="1" />
+    <input name="enable6" type="boolean" value="true" />
+    <input name="name6" type="string" value="layer6" />
+    <input name="input6" type="closure" />
+    <input name="mix6" type="float" value="1" />
+    <input name="enable7" type="boolean" value="true" />
+    <input name="name7" type="string" value="layer7" />
+    <input name="input7" type="closure" />
+    <input name="mix7" type="float" value="1" />
+    <input name="enable8" type="boolean" value="true" />
+    <input name="name8" type="string" value="layer8" />
+    <input name="input8" type="closure" />
+    <input name="mix8" type="float" value="1" />
+  </nodedef>
+  <nodedef name="length" type="float" node="length">
+    <input name="input" type="vector3" value="0, 0, 0" />
+    <input name="mode" type="string" value="euclidian" />
+  </nodedef>
+  <nodedef name="log" type="color3" node="log">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="base" type="color3" value="2.71828, 2.71828, 2.71828" />
+  </nodedef>
+  <nodedef name="matrix_multiply_vector" type="vector3" node="matrix_multiply_vector">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="type" type="string" value="point" />
+    <input name="matrix" type="matrix44" />
+  </nodedef>
+  <nodedef name="matrix_transform" type="matrix44" node="matrix_transform">
+    <input name="transform_order" type="string" value="srt" />
+    <input name="rotation_type" type="string" value="euler" />
+    <input name="units" type="string" value="degrees" />
+    <input name="rotation_order" type="string" value="xyz" />
+    <input name="rotation" type="vector3" value="0, 0, 0" />
+    <input name="axis" type="vector3" value="1, 0, 0" />
+    <input name="angle" type="float" value="0" />
+    <input name="translate" type="vector3" value="0, 0, 0" />
+    <input name="scale" type="vector3" value="1, 1, 1" />
+    <input name="pivot" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="matte" type="closure" node="matte">
+    <input name="passthrough" type="closure" />
+    <input name="color" type="color4" value="0, 0, 0, 0" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="max" type="color3" node="max">
+    <input name="input1" type="color3" value="0, 0, 0" />
+    <input name="input2" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="min" type="color3" node="min">
+    <input name="input1" type="color3" value="0, 0, 0" />
+    <input name="input2" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="mix_rgba" type="color4" node="mix_rgba">
+    <input name="input1" type="color4" value="0, 0, 0, 1" />
+    <input name="input2" type="color4" value="0, 0, 0, 1" />
+    <input name="mix" type="float" value="0.5" />
+  </nodedef>
+  <nodedef name="modulo" type="color3" node="modulo">
+    <input name="input" type="color3" value="1, 1, 1" />
+    <input name="divisor" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="multiply" type="color3" node="multiply">
+    <input name="input1" type="color3" value="1, 1, 1" />
+    <input name="input2" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="negate" type="color3" node="negate">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="normalize" type="vector3" node="normalize">
+    <input name="input" type="vector3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="normal_map" type="vector3" node="normal_map">
+    <input name="input" type="vector3" value="0, 0, 0" />
+    <input name="tangent" type="vector3" value="0, 0, 0" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="order" type="string" value="XYZ" />
+    <input name="invert_x" type="boolean" value="false" />
+    <input name="invert_y" type="boolean" value="false" />
+    <input name="invert_z" type="boolean" value="false" />
+    <input name="color_to_signed" type="boolean" value="true" />
+    <input name="tangent_space" type="boolean" value="true" />
+    <input name="strength" type="float" value="1" />
+  </nodedef>
+  <nodedef name="passthrough" type="closure" node="passthrough">
+    <input name="passthrough" type="closure" />
+    <input name="eval1" type="closure" />
+    <input name="eval2" type="closure" />
+    <input name="eval3" type="closure" />
+    <input name="eval4" type="closure" />
+    <input name="eval5" type="closure" />
+    <input name="eval6" type="closure" />
+    <input name="eval7" type="closure" />
+    <input name="eval8" type="closure" />
+    <input name="eval9" type="closure" />
+    <input name="eval10" type="closure" />
+    <input name="eval11" type="closure" />
+    <input name="eval12" type="closure" />
+    <input name="eval13" type="closure" />
+    <input name="eval14" type="closure" />
+    <input name="eval15" type="closure" />
+    <input name="eval16" type="closure" />
+    <input name="eval17" type="closure" />
+    <input name="eval18" type="closure" />
+    <input name="eval19" type="closure" />
+    <input name="eval20" type="closure" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="pow" type="color3" node="pow">
+    <input name="base" type="color3" value="2.71828, 2.71828, 2.71828" />
+    <input name="exponent" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ramp_float" type="float" node="ramp_float">
+    <input name="type" type="string" value="custom" />
+    <input name="input" type="float" value="0" />
+    <input name="position" type="floatarray" value="0.0, 1.0" />
+    <input name="value" type="floatarray" value="0.0, 1.0" />
+    <input name="interpolation" type="integerarray" value="2, 2" />
+    <input name="uvset" type="string" value="" />
+  </nodedef>
+  <nodedef name="ramp_rgb" type="color3" node="ramp_rgb">
+    <input name="type" type="string" value="custom" />
+    <input name="input" type="float" value="0" />
+    <input name="position" type="floatarray" value="0.0, 1.0" />
+    <input name="color" type="color3array" value="0.0, 0.0, 0.0, 1.0, 1.0, 1.0" />
+    <input name="interpolation" type="integerarray" value="2, 2" />
+    <input name="uvset" type="string" value="" />
+  </nodedef>
+  <nodedef name="random" type="color3" node="random">
+    <input name="input_type" type="string" value="int" />
+    <input name="input_int" type="integer" value="0" />
+    <input name="input_float" type="float" value="0" />
+    <input name="input_color" type="color3" value="0, 0, 0" />
+    <input name="seed" type="integer" value="0" />
+    <input name="grayscale" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="range" type="color3" node="range">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="input_min" type="float" value="0" />
+    <input name="input_max" type="float" value="1" />
+    <input name="output_min" type="float" value="0" />
+    <input name="output_max" type="float" value="1" />
+    <input name="smoothstep" type="boolean" value="false" />
+    <input name="contrast" type="float" value="1" />
+    <input name="contrast_pivot" type="float" value="0.5" />
+    <input name="bias" type="float" value="0.5" />
+    <input name="gain" type="float" value="0.5" />
+  </nodedef>
+  <nodedef name="reciprocal" type="color3" node="reciprocal">
+    <input name="input" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="rgba_to_float" type="float" node="rgba_to_float">
+    <input name="input" type="color4" value="0, 0, 0, 1" />
+    <input name="mode" type="string" value="average" />
+  </nodedef>
+  <nodedef name="rgb_to_float" type="float" node="rgb_to_float">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="mode" type="string" value="average" />
+  </nodedef>
+  <nodedef name="rgb_to_vector" type="vector3" node="rgb_to_vector">
+    <input name="input" type="vector3" value="0, 0, 0" />
+    <input name="mode" type="string" value="raw" />
+  </nodedef>
+  <nodedef name="shadow_matte" type="color4" node="shadow_matte">
+    <input name="background" type="string" value="scene_background" />
+    <input name="shadow_color" type="color3" value="0, 0, 0" />
+    <input name="shadow_opacity" type="float" value="1" />
+    <input name="background_color" type="color3" value="1, 1, 1" />
+    <input name="diffuse_color" type="color3" value="1, 1, 1" />
+    <input name="diffuse_use_background" type="boolean" value="true" />
+    <input name="diffuse_intensity" type="float" value="0.7" />
+    <input name="backlighting" type="float" value="0" />
+    <input name="indirect_diffuse_enable" type="boolean" value="false" />
+    <input name="indirect_specular_enable" type="boolean" value="false" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_intensity" type="float" value="1" />
+    <input name="specular_roughness" type="float" value="0.2" />
+    <input name="specular_IOR" type="float" value="1.5" />
+    <input name="alpha_mask" type="boolean" value="true" />
+    <input name="aov_group" type="string" value="" />
+    <input name="aov_shadow" type="string" value="shadow" />
+    <input name="aov_shadow_diff" type="string" value="shadow_diff" />
+    <input name="aov_shadow_mask" type="string" value="shadow_mask" />
+  </nodedef>
+  <nodedef name="shuffle" type="color4" node="shuffle">
+    <input name="color" type="color3" value="0, 0, 0" />
+    <input name="alpha" type="float" value="1" />
+    <input name="channel_r" type="string" value="R" />
+    <input name="channel_g" type="string" value="G" />
+    <input name="channel_b" type="string" value="B" />
+    <input name="channel_a" type="string" value="A" />
+    <input name="negate_r" type="boolean" value="false" />
+    <input name="negate_g" type="boolean" value="false" />
+    <input name="negate_b" type="boolean" value="false" />
+    <input name="negate_a" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="sign" type="color3" node="sign">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="skin" type="closure" node="skin">
+    <input name="sss_weight" type="float" value="1" />
+    <input name="shallow_scatter_color" type="color3" value="1, 0.909, 0.769" />
+    <input name="shallow_scatter_weight" type="float" value="0.5" />
+    <input name="shallow_scatter_radius" type="float" value="0.15" />
+    <input name="mid_scatter_color" type="color3" value="0.949, 0.714, 0.56" />
+    <input name="mid_scatter_weight" type="float" value="0.25" />
+    <input name="mid_scatter_radius" type="float" value="0.25" />
+    <input name="deep_scatter_color" type="color3" value="0.7, 0.1, 0.1" />
+    <input name="deep_scatter_weight" type="float" value="1" />
+    <input name="deep_scatter_radius" type="float" value="0.6" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_weight" type="float" value="0.8" />
+    <input name="specular_roughness" type="float" value="0.5" />
+    <input name="specular_ior" type="float" value="1.44" />
+    <input name="sheen_color" type="color3" value="1, 1, 1" />
+    <input name="sheen_weight" type="float" value="0" />
+    <input name="sheen_roughness" type="float" value="0.35" />
+    <input name="sheen_ior" type="float" value="1.44" />
+    <input name="global_sss_radius_multiplier" type="float" value="1" />
+    <input name="specular_in_secondary_rays" type="boolean" value="false" />
+    <input name="fresnel_affect_sss" type="boolean" value="true" />
+    <input name="opacity" type="float" value="1" />
+    <input name="opacity_color" type="color3" value="1, 1, 1" />
+    <input name="normal" type="vector3" value="0, 1, 0" />
+  </nodedef>
+  <nodedef name="space_transform" type="vector3" node="space_transform">
+    <input name="input" type="vector3" value="0, 0, 0" />
+    <input name="type" type="string" value="point" />
+    <input name="from" type="string" value="world" />
+    <input name="to" type="string" value="world" />
+    <input name="tangent" type="vector3" value="0, 0, 0" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="normalize" type="boolean" value="false" />
+    <input name="scale" type="float" value="1" />
+  </nodedef>
+  <nodedef name="sqrt" type="color3" node="sqrt">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="state_float" type="float" node="state_float">
+    <input name="variable" type="string" value="sx" />
+  </nodedef>
+  <nodedef name="state_int" type="integer" node="state_int">
+    <input name="variable" type="string" value="x" />
+  </nodedef>
+  <nodedef name="state_vector" type="vector3" node="state_vector">
+    <input name="variable" type="string" value="Ro" />
+  </nodedef>
+  <nodedef name="subtract" type="color3" node="subtract">
+    <input name="input1" type="color3" value="0, 0, 0" />
+    <input name="input2" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="switch_rgba" type="color4" node="switch_rgba">
+    <input name="index" type="integer" value="0" />
+    <input name="input0" type="color4" value="0, 0, 0, 1" />
+    <input name="input1" type="color4" value="0, 0, 0, 1" />
+    <input name="input2" type="color4" value="0, 0, 0, 1" />
+    <input name="input3" type="color4" value="0, 0, 0, 1" />
+    <input name="input4" type="color4" value="0, 0, 0, 1" />
+    <input name="input5" type="color4" value="0, 0, 0, 1" />
+    <input name="input6" type="color4" value="0, 0, 0, 1" />
+    <input name="input7" type="color4" value="0, 0, 0, 1" />
+    <input name="input8" type="color4" value="0, 0, 0, 1" />
+    <input name="input9" type="color4" value="0, 0, 0, 1" />
+    <input name="input10" type="color4" value="0, 0, 0, 1" />
+    <input name="input11" type="color4" value="0, 0, 0, 1" />
+    <input name="input12" type="color4" value="0, 0, 0, 1" />
+    <input name="input13" type="color4" value="0, 0, 0, 1" />
+    <input name="input14" type="color4" value="0, 0, 0, 1" />
+    <input name="input15" type="color4" value="0, 0, 0, 1" />
+    <input name="input16" type="color4" value="0, 0, 0, 1" />
+    <input name="input17" type="color4" value="0, 0, 0, 1" />
+    <input name="input18" type="color4" value="0, 0, 0, 1" />
+    <input name="input19" type="color4" value="0, 0, 0, 1" />
+  </nodedef>
+  <nodedef name="switch_shader" type="closure" node="switch_shader">
+    <input name="index" type="integer" value="0" />
+    <input name="input0" type="closure" />
+    <input name="input1" type="closure" />
+    <input name="input2" type="closure" />
+    <input name="input3" type="closure" />
+    <input name="input4" type="closure" />
+    <input name="input5" type="closure" />
+    <input name="input6" type="closure" />
+    <input name="input7" type="closure" />
+    <input name="input8" type="closure" />
+    <input name="input9" type="closure" />
+    <input name="input10" type="closure" />
+    <input name="input11" type="closure" />
+    <input name="input12" type="closure" />
+    <input name="input13" type="closure" />
+    <input name="input14" type="closure" />
+    <input name="input15" type="closure" />
+    <input name="input16" type="closure" />
+    <input name="input17" type="closure" />
+    <input name="input18" type="closure" />
+    <input name="input19" type="closure" />
+  </nodedef>
+  <nodedef name="thin_film" type="color3" node="thin_film">
+    <input name="thickness_min" type="float" value="250" />
+    <input name="thickness_max" type="float" value="400" />
+    <input name="thickness" type="float" value="0" />
+    <input name="ior_medium" type="float" value="1" />
+    <input name="ior_film" type="float" value="1.5" />
+    <input name="ior_internal" type="float" value="1" />
+  </nodedef>
+  <nodedef name="trace_set" type="closure" node="trace_set">
+    <input name="passthrough" type="closure" />
+    <input name="trace_set" type="string" value="" />
+    <input name="inclusive" type="boolean" value="true" />
+  </nodedef>
+  <nodedef name="trigo" type="color3" node="trigo">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="function" type="string" value="cos" />
+    <input name="units" type="string" value="radians" />
+    <input name="frequency" type="float" value="1" />
+    <input name="phase" type="float" value="0" />
+  </nodedef>
+  <nodedef name="triplanar" type="color3" node="triplanar">
+    <input name="input" type="color3" value="1, 1, 1" />
+    <input name="scale" type="vector3" value="1, 1, 1" />
+    <input name="rotate" type="vector3" value="0, 0, 0" />
+    <input name="offset" type="vector3" value="0, 0, 0" />
+    <input name="coord_space" type="string" value="object" />
+    <input name="pref_name" type="string" value="Pref" />
+    <input name="blend" type="float" value="0" />
+    <input name="cell" type="boolean" value="false" />
+    <input name="cell_rotate" type="float" value="0" />
+    <input name="cell_blend" type="float" value="0.1" />
+  </nodedef>
+  <nodedef name="two_sided" type="closure" node="two_sided">
+    <input name="front" type="closure" />
+    <input name="back" type="closure" />
+  </nodedef>
+  <nodedef name="user_data_float" type="float" node="user_data_float">
+    <input name="attribute" type="string" value="" />
+    <input name="default" type="float" value="0" />
+  </nodedef>
+  <nodedef name="user_data_int" type="integer" node="user_data_int">
+    <input name="attribute" type="string" value="" />
+    <input name="default" type="integer" value="0" />
+  </nodedef>
+  <nodedef name="user_data_rgba" type="color4" node="user_data_rgba">
+    <input name="attribute" type="string" value="" />
+    <input name="default" type="color4" value="0, 0, 0, 1" />
+  </nodedef>
+  <nodedef name="user_data_rgb" type="color3" node="user_data_rgb">
+    <input name="attribute" type="string" value="" />
+    <input name="default" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="user_data_string" type="string" node="user_data_string">
+    <input name="attribute" type="string" value="" />
+    <input name="default" type="string" value="" />
+  </nodedef>
+  <nodedef name="uv_transform" type="color4" node="uv_transform">
+    <input name="passthrough" type="color4" value="0, 0, 0, 1" />
+    <input name="unit" type="string" value="degrees" />
+    <input name="uvset" type="string" value="" />
+    <input name="coverage" type="vector2" value="1, 1" />
+    <input name="scale_frame" type="vector2" value="1, 1" />
+    <input name="translate_frame" type="vector2" value="0, 0" />
+    <input name="rotate_frame" type="float" value="0" />
+    <input name="pivot_frame" type="vector2" value="0.5, 0.5" />
+    <input name="wrap_frame_u" type="string" value="periodic" />
+    <input name="wrap_frame_v" type="string" value="periodic" />
+    <input name="wrap_frame_color" type="color4" value="0, 0, 0, 1" />
+    <input name="repeat" type="vector2" value="1, 1" />
+    <input name="offset" type="vector2" value="0, 0" />
+    <input name="rotate" type="float" value="0" />
+    <input name="pivot" type="vector2" value="0.5, 0.5" />
+    <input name="noise" type="vector2" value="0, 0" />
+    <input name="mirror_u" type="boolean" value="false" />
+    <input name="mirror_v" type="boolean" value="false" />
+    <input name="flip_u" type="boolean" value="false" />
+    <input name="flip_v" type="boolean" value="false" />
+    <input name="swap_uv" type="boolean" value="false" />
+    <input name="stagger" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="vector_map" type="vector3" node="vector_map">
+    <input name="input" type="vector3" value="0, 0, 0" />
+    <input name="tangent" type="vector3" value="0, 0, 0" />
+    <input name="normal" type="vector3" value="0, 0, 0" />
+    <input name="order" type="string" value="XYZ" />
+    <input name="invert_x" type="boolean" value="false" />
+    <input name="invert_y" type="boolean" value="false" />
+    <input name="invert_z" type="boolean" value="false" />
+    <input name="color_to_signed" type="boolean" value="false" />
+    <input name="tangent_space" type="boolean" value="true" />
+    <input name="scale" type="float" value="1" />
+  </nodedef>
+  <nodedef name="vector_to_rgb" type="color3" node="vector_to_rgb">
+    <input name="input" type="vector3" value="0, 0, 0" />
+    <input name="mode" type="string" value="raw" />
+  </nodedef>
+  <nodedef name="volume_collector" type="closure" node="volume_collector">
+    <input name="scattering_source" type="string" value="parameter" />
+    <input name="scattering" type="color3" value="1, 1, 1" />
+    <input name="scattering_channel" type="string" value="" />
+    <input name="scattering_color" type="color3" value="1, 1, 1" />
+    <input name="scattering_intensity" type="float" value="1" />
+    <input name="anisotropy" type="float" value="0" />
+    <input name="attenuation_source" type="string" value="parameter" />
+    <input name="attenuation" type="color3" value="1, 1, 1" />
+    <input name="attenuation_channel" type="string" value="" />
+    <input name="attenuation_color" type="color3" value="1, 1, 1" />
+    <input name="attenuation_intensity" type="float" value="1" />
+    <input name="attenuation_mode" type="string" value="absorption" />
+    <input name="emission_source" type="string" value="parameter" />
+    <input name="emission" type="color3" value="0, 0, 0" />
+    <input name="emission_channel" type="string" value="" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="emission_intensity" type="float" value="1" />
+    <input name="position_offset" type="vector3" value="0, 0, 0" />
+    <input name="interpolation" type="string" value="trilinear" />
+  </nodedef>
+  <nodedef name="volume_sample_float" type="float" node="volume_sample_float">
+    <input name="channel" type="string" value="" />
+    <input name="position_offset" type="vector3" value="0, 0, 0" />
+    <input name="interpolation" type="string" value="trilinear" />
+    <input name="volume_type" type="string" value="fog" />
+    <input name="sdf_offset" type="float" value="0" />
+    <input name="sdf_blend" type="float" value="0" />
+    <input name="sdf_invert" type="boolean" value="false" />
+    <input name="input_min" type="float" value="0" />
+    <input name="input_max" type="float" value="1" />
+    <input name="contrast" type="float" value="1" />
+    <input name="contrast_pivot" type="float" value="0.5" />
+    <input name="bias" type="float" value="0.5" />
+    <input name="gain" type="float" value="0.5" />
+    <input name="output_min" type="float" value="0" />
+    <input name="output_max" type="float" value="1" />
+    <input name="clamp_min" type="boolean" value="false" />
+    <input name="clamp_max" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="volume_sample_rgb" type="color3" node="volume_sample_rgb">
+    <input name="channel" type="string" value="" />
+    <input name="position_offset" type="vector3" value="0, 0, 0" />
+    <input name="interpolation" type="string" value="trilinear" />
+    <input name="gamma" type="float" value="1" />
+    <input name="hue_shift" type="float" value="0" />
+    <input name="saturation" type="float" value="1" />
+    <input name="contrast" type="float" value="1" />
+    <input name="contrast_pivot" type="float" value="0.18" />
+    <input name="exposure" type="float" value="0" />
+    <input name="multiply" type="float" value="1" />
+    <input name="add" type="float" value="0" />
+  </nodedef>
+</materialx>

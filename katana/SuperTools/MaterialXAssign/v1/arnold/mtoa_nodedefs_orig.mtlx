@@ -1,0 +1,1146 @@
+<?xml version="1.0"?>
+<materialx version="1.36">
+  <typedef name="closure" semantic="shader" />
+  <nodedef name="ArnoldShadingNode" type="color3" node="MayaBlendColors">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="blender" type="float" value="0.5" />
+    <input name="color1" type="color3" value="1, 0, 0" />
+    <input name="color2" type="color3" value="0, 0, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode1" type="color4" node="MayaBrownian">
+    <input name="lacunarity" type="float" value="4" />
+    <input name="increment" type="float" value="0.1" />
+    <input name="octaves" type="float" value="3" />
+    <input name="weight3d" type="color3" value="1, 1, 1" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode2" type="color4" node="MayaBulge">
+    <input name="uWidth" type="float" value="0.1" />
+    <input name="vWidth" type="float" value="0.1" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode3" type="vector3" node="MayaBump2D">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="bump_map" type="float" value="0" />
+    <input name="bump_height" type="float" value="1" />
+    <input name="normal_map" type="color3" value="0, 0, 1" />
+    <input name="flip_r" type="float" value="1" />
+    <input name="flip_g" type="float" value="1" />
+    <input name="swap_tangents" type="float" value="0" />
+    <input name="use_derivatives" type="float" value="1" />
+    <input name="use_as" type="string" value="bump" />
+    <input name="normal" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode4" type="color4" node="MayaChecker">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="color1" type="color3" value="1, 1, 1" />
+    <input name="color2" type="color3" value="0, 0, 0" />
+    <input name="contrast" type="float" value="1" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+    <input name="filter" type="float" value="1" />
+    <input name="filterOffset" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode5" type="color3" node="MayaClamp">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="min" type="color3" value="0, 0, 0" />
+    <input name="max" type="color3" value="1, 1, 1" />
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode6" type="color4" node="MayaCloth">
+    <input name="gapColor" type="color3" value="0, 0, 0" />
+    <input name="uColor" type="color3" value="1, 1, 1" />
+    <input name="vColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="uWidth" type="float" value="0.75" />
+    <input name="vWidth" type="float" value="0.75" />
+    <input name="uWave" type="float" value="0" />
+    <input name="vWave" type="float" value="0" />
+    <input name="randomness" type="float" value="0" />
+    <input name="widthSpread" type="float" value="0" />
+    <input name="brightSpread" type="float" value="0" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode7" type="color3" node="MayaCloud">
+    <input name="color1" type="color3" value="0, 0, 0" />
+    <input name="color2" type="color3" value="1, 1, 1" />
+    <input name="contrast" type="float" value="0.5" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="depth" type="color3" value="0, 8" />
+    <input name="ripples" type="color3" value="1, 1, 1" />
+    <input name="softEdges" type="float" value="1" />
+    <input name="edgeThresh" type="float" value="0.9" />
+    <input name="centerThresh" type="float" value="0" />
+    <input name="transpRange" type="float" value="0.5" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="invert" type="float" value="0" />
+    <input name="local" type="float" value="0" />
+    <input name="wrap" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode8" type="float" node="MayaCloudAlpha">
+    <input name="amplitude" type="float" value="1" />
+    <input name="depth" type="color3" value="0, 8" />
+    <input name="ripples" type="color3" value="1, 1, 1" />
+    <input name="edgeThresh" type="float" value="0.9" />
+    <input name="centerThresh" type="float" value="0" />
+    <input name="transpRange" type="float" value="0.5" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alpahOffset" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="local" type="float" value="0" />
+    <input name="wrap" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode9" type="color3" node="MayaCondition">
+    <input name="operation" type="string" value="equal" />
+    <input name="firstTerm" type="float" value="0" />
+    <input name="secondTerm" type="float" value="0" />
+    <input name="colorIfTrue" type="color3" value="0, 0, 0" />
+    <input name="colorIfFalse" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode10" type="color4" node="MayaContrast">
+    <input name="value" type="color3" value="0, 0, 0" />
+    <input name="contrast" type="color3" value="2, 2, 2" />
+    <input name="bias" type="color3" value="0.5, 0.5, 0.5" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode11" type="color4" node="MayaCrater">
+    <input name="shaker" type="float" value="1.5" />
+    <input name="channel1" type="color3" value="1, 0, 0" />
+    <input name="channel2" type="color3" value="0, 1, 0" />
+    <input name="channel3" type="color3" value="0, 0, 1" />
+    <input name="melt" type="float" value="0" />
+    <input name="balance" type="float" value="0" />
+    <input name="frequency" type="float" value="1.5" />
+    <input name="normDepth" type="float" value="5" />
+    <input name="normMelt" type="float" value="0" />
+    <input name="normBalance" type="float" value="1" />
+    <input name="normFrequency" type="float" value="1" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode12" type="vector2" node="MayaDoubleShadingSwitch">
+    <input name="default" type="color3" value="0.8, 0.8" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode13" type="color4" node="MayaEnvSphere">
+    <input name="image" type="color3" value="0, 0, 0" />
+    <input name="flip" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode14" type="color4" node="MayaFile">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="coverage" type="color3" value="1, 1" />
+    <input name="translateFrame" type="color3" value="0, 0" />
+    <input name="rotateFrame" type="float" value="0" />
+    <input name="mirrorU" type="float" value="0" />
+    <input name="mirrorV" type="float" value="0" />
+    <input name="wrapU" type="float" value="1" />
+    <input name="wrapV" type="float" value="1" />
+    <input name="stagger" type="float" value="0" />
+    <input name="repeatUV" type="color3" value="1, 1" />
+    <input name="offsetUV" type="color3" value="0, 0" />
+    <input name="rotateUV" type="float" value="0" />
+    <input name="filename" type="string" value="" />
+    <input name="noiseUV" type="color3" value="0, 0" />
+    <input name="mipBias" type="float" value="0" />
+    <input name="uvSetName" type="string" value="" />
+    <input name="filter" type="string" value="smart_bicubic" />
+    <input name="useDefaultColor" type="float" value="1" />
+    <input name="color_space" type="string" value="" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode15" type="float" node="MayaFlatClosure">
+    <input name="color" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode16" type="float" node="MayaFluid">
+    <input name="filter_type" type="string" value="Linear" />
+    <input name="transparency" type="color3" value="0.1, 0.1, 0.1" />
+    <input name="phase_func" type="float" value="0" />
+    <input name="color_texture" type="float" value="0" />
+    <input name="incand_texture" type="float" value="0" />
+    <input name="opacity_texture" type="float" value="0" />
+    <input name="texture_type" type="string" value="Perlin Noise" />
+    <input name="color_tex_gain" type="float" value="1" />
+    <input name="incand_tex_gain" type="float" value="1" />
+    <input name="opacity_tex_gain" type="float" value="1" />
+    <input name="threshold" type="float" value="0" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="frequency_ratio" type="float" value="2" />
+    <input name="depth_max" type="float" value="2" />
+    <input name="invert_texture" type="float" value="0" />
+    <input name="inflection" type="float" value="0" />
+    <input name="texture_time" type="float" value="0" />
+    <input name="zoom_factor" type="float" value="1" />
+    <input name="frequency" type="float" value="1" />
+    <input name="texture_origin_x" type="float" value="0" />
+    <input name="texture_origin_y" type="float" value="0" />
+    <input name="texture_origin_z" type="float" value="0" />
+    <input name="texture_scale" type="color3" value="1, 1, 1" />
+    <input name="texture_rotate" type="color3" value="0, 0, 0" />
+    <input name="implode" type="float" value="0" />
+    <input name="implode_center" type="color3" value="0, 0, 0" />
+    <input name="billow_density" type="float" value="1" />
+    <input name="spottyness" type="float" value="0.1" />
+    <input name="size_rand" type="float" value="0" />
+    <input name="randomness" type="float" value="1" />
+    <input name="billow_falloff" type="string" value="Fast" />
+    <input name="num_waves" type="float" value="5" />
+    <input name="texture_affect_color" type="float" value="0" />
+    <input name="texture_affect_incand" type="float" value="0" />
+    <input name="texture_affect_opacity" type="float" value="0" />
+    <input name="volume_texture" type="string" value="" />
+    <input name="shadow_opacity" type="float" value="0.5" />
+    <input name="enable_deformation_blur" type="float" value="0" />
+    <input name="motion_vector_scale" type="float" value="1" />
+    <input name="edge_dropoff" type="float" value="0.05" />
+    <input name="color_gradient_type" type="string" value="Constant" />
+    <input name="color_gradient_positions" type="floatarray" />
+    <input name="color_gradient_values" type="floatarray" />
+    <input name="color_gradient_interps" type="floatarray" />
+    <input name="color_gradient_input_bias" type="float" value="0" />
+    <input name="incandescence_gradient_type" type="string" value="Temperature" />
+    <input name="incandescence_gradient_positions" type="floatarray" />
+    <input name="incandescence_gradient_values" type="floatarray" />
+    <input name="incandescence_gradient_interps" type="floatarray" />
+    <input name="incandescence_gradient_input_bias" type="float" value="0" />
+    <input name="opacity_gradient_type" type="string" value="Density" />
+    <input name="opacity_gradient_positions" type="floatarray" />
+    <input name="opacity_gradient_values" type="floatarray" />
+    <input name="opacity_gradient_interps" type="floatarray" />
+    <input name="opacity_gradient_input_bias" type="float" value="0" />
+    <input name="coordinate_method" type="string" value="Fixed" />
+    <input name="dropoff_shape" type="string" value="Cube" />
+    <input name="velocity_scale" type="color3" value="1, 1, 1" />
+    <input name="xres" type="float" value="0" />
+    <input name="yres" type="float" value="0" />
+    <input name="zres" type="float" value="0" />
+    <input name="min" type="color3" value="0, 0, 0" />
+    <input name="max" type="color3" value="0, 0, 0" />
+    <input name="density_method" type="string" value="Gradient" />
+    <input name="density_gradient" type="string" value="Constant" />
+    <input name="density" type="floatarray" />
+    <input name="fuel_method" type="string" value="Gradient" />
+    <input name="fuel_gradient" type="string" value="Constant" />
+    <input name="fuel" type="floatarray" />
+    <input name="temperature_method" type="string" value="Gradient" />
+    <input name="temperature_gradient" type="string" value="Constant" />
+    <input name="temperature" type="floatarray" />
+    <input name="pressure" type="floatarray" />
+    <input name="velocity_method" type="string" value="Gradient" />
+    <input name="velocity_gradient" type="string" value="Constant" />
+    <input name="velocity" type="floatarray" />
+    <input name="colors" type="floatarray" />
+    <input name="coordinates" type="floatarray" />
+    <input name="falloff" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode17" type="color3" node="MayaFluidData">
+    <input name="xres" type="float" value="0" />
+    <input name="yres" type="float" value="0" />
+    <input name="zres" type="float" value="0" />
+    <input name="min" type="color3" value="0, 0, 0" />
+    <input name="max" type="color3" value="0, 0, 0" />
+    <input name="density_method" type="string" value="Gradient" />
+    <input name="density_gradient" type="string" value="Constant" />
+    <input name="density" type="floatarray" />
+    <input name="fuel_method" type="string" value="Gradient" />
+    <input name="fuel_gradient" type="string" value="Constant" />
+    <input name="fuel" type="floatarray" />
+    <input name="temperature_method" type="string" value="Gradient" />
+    <input name="temperature_gradient" type="string" value="Constant" />
+    <input name="temperature" type="floatarray" />
+    <input name="pressure" type="floatarray" />
+    <input name="velocity_method" type="string" value="Gradient" />
+    <input name="velocity_gradient" type="string" value="Constant" />
+    <input name="velocity" type="floatarray" />
+    <input name="colors" type="floatarray" />
+    <input name="coordinates" type="floatarray" />
+    <input name="falloff" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode18" type="color3" node="MayaFluidTexture2D">
+    <input name="filter_type" type="string" value="Linear" />
+    <input name="edge_dropoff" type="float" value="0.05" />
+    <input name="color_gradient_type" type="string" value="Constant" />
+    <input name="color_gradient_positions" type="floatarray" />
+    <input name="color_gradient_values" type="floatarray" />
+    <input name="color_gradient_interps" type="floatarray" />
+    <input name="color_gradient_input_bias" type="float" value="0" />
+    <input name="incandescence_gradient_type" type="string" value="Temperature" />
+    <input name="incandescence_gradient_positions" type="floatarray" />
+    <input name="incandescence_gradient_values" type="floatarray" />
+    <input name="incandescence_gradient_interps" type="floatarray" />
+    <input name="incandescence_gradient_input_bias" type="float" value="0" />
+    <input name="opacity_gradient_type" type="string" value="Density" />
+    <input name="opacity_gradient_positions" type="floatarray" />
+    <input name="opacity_gradient_values" type="floatarray" />
+    <input name="opacity_gradient_interps" type="floatarray" />
+    <input name="opacity_gradient_input_bias" type="float" value="0" />
+    <input name="coordinate_method" type="string" value="Fixed" />
+    <input name="dropoff_shape" type="string" value="Cube" />
+    <input name="velocity_scale" type="color3" value="1, 1, 1" />
+    <input name="xres" type="float" value="0" />
+    <input name="yres" type="float" value="0" />
+    <input name="density_method" type="string" value="Gradient" />
+    <input name="density_gradient" type="string" value="Constant" />
+    <input name="density" type="floatarray" />
+    <input name="fuel_method" type="string" value="Gradient" />
+    <input name="fuel_gradient" type="string" value="Constant" />
+    <input name="fuel" type="floatarray" />
+    <input name="temperature_method" type="string" value="Gradient" />
+    <input name="temperature_gradient" type="string" value="Constant" />
+    <input name="temperature" type="floatarray" />
+    <input name="pressure" type="floatarray" />
+    <input name="velocity_method" type="string" value="Gradient" />
+    <input name="velocity_gradient" type="string" value="Constant" />
+    <input name="velocity" type="floatarray" />
+    <input name="colors" type="floatarray" />
+    <input name="coordinates" type="floatarray" />
+    <input name="falloff" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode19" type="color4" node="MayaFractal">
+    <input name="amplitude" type="float" value="1" />
+    <input name="threshold" type="float" value="0" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="frequencyRatio" type="float" value="2" />
+    <input name="levelMin" type="float" value="0" />
+    <input name="levelMax" type="float" value="9" />
+    <input name="bias" type="float" value="0" />
+    <input name="inflection" type="float" value="0" />
+    <input name="animated" type="float" value="0" />
+    <input name="time" type="float" value="0" />
+    <input name="timeRatio" type="float" value="2" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode20" type="color3" node="MayaGammaCorrect">
+    <input name="value" type="color3" value="0, 0, 0" />
+    <input name="gamma" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode21" type="color4" node="MayaGranite">
+    <input name="color1" type="color3" value="0, 0, 0" />
+    <input name="color2" type="color3" value="0.549, 0.784, 0.392" />
+    <input name="color3" type="color3" value="0.627, 0.824, 0.823" />
+    <input name="fillerColor" type="color3" value="0.588, 0.294, 0.196" />
+    <input name="cellSize" type="float" value="0.15" />
+    <input name="density" type="float" value="1" />
+    <input name="mixRatio" type="float" value="0.5" />
+    <input name="spottyness" type="float" value="0.3" />
+    <input name="randomness" type="float" value="1" />
+    <input name="threshold" type="float" value="0.5" />
+    <input name="creases" type="float" value="1" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode22" type="color4" node="MayaGrid">
+    <input name="lineColor" type="color3" value="1, 1, 1" />
+    <input name="fillerColor" type="color3" value="0, 0, 0" />
+    <input name="uWidth" type="float" value="0.1" />
+    <input name="vWidth" type="float" value="0.1" />
+    <input name="contrast" type="float" value="1" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+    <input name="filter" type="float" value="1" />
+    <input name="filterOffset" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode23" type="color4" node="MayaHair">
+    <input name="hairColor" type="floatarray" />
+    <input name="opacity" type="float" value="1" />
+    <input name="translucence" type="float" value="0.5" />
+    <input name="specularColor" type="color3" value="0.35, 0.35, 0.299995" />
+    <input name="specularPower" type="float" value="3" />
+    <input name="castShadows" type="float" value="1" />
+    <input name="diffuseRand" type="float" value="0.2" />
+    <input name="specularRand" type="float" value="0.4" />
+    <input name="hueRand" type="float" value="0" />
+    <input name="satRand" type="float" value="0" />
+    <input name="valRand" type="float" value="0" />
+    <input name="indirectDiffuse" type="float" value="1" />
+    <input name="hairColorScale" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode24" type="color3" node="MayaHsvToRgb">
+    <input name="inHsv" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode25" type="color4" node="MayaImagePlane">
+    <input name="filename" type="string" value="" />
+    <input name="color" type="floatarray" />
+    <input name="color_space" type="string" value="" />
+    <input name="displayMode" type="string" value="outline" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="coverage" type="floatarray" />
+    <input name="coverageOrigin" type="color3" value="0, 0" />
+    <input name="fitFactor" type="color3" value="1, 1" />
+    <input name="translate" type="color3" value="0, 0" />
+    <input name="rotate" type="float" value="0" />
+    <input name="camera" type="string" value="" />
+    <input name="sourceTexture" type="string" value="" />
+    <input name="offscreenColor" type="color3" value="0, 0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode26" type="closure" node="MayaLayeredShader">
+    <input name="compositingFlag" type="string" value="shader" />
+    <input name="numInputs" type="float" value="0" />
+    <input name="color0" type="closure" />
+    <input name="color1" type="closure" />
+    <input name="color2" type="closure" />
+    <input name="color3" type="closure" />
+    <input name="color4" type="closure" />
+    <input name="color5" type="closure" />
+    <input name="color6" type="closure" />
+    <input name="color7" type="closure" />
+    <input name="color8" type="closure" />
+    <input name="color9" type="closure" />
+    <input name="color10" type="closure" />
+    <input name="color11" type="closure" />
+    <input name="color12" type="closure" />
+    <input name="color13" type="closure" />
+    <input name="color14" type="closure" />
+    <input name="color15" type="closure" />
+    <input name="transparency0" type="color3" value="1, 1, 1" />
+    <input name="transparency1" type="floatarray" />
+    <input name="transparency2" type="color3" value="1, 1, 1" />
+    <input name="transparency3" type="color3" value="1, 1, 1" />
+    <input name="transparency4" type="color3" value="1, 1, 1" />
+    <input name="transparency5" type="color3" value="1, 1, 1" />
+    <input name="transparency6" type="color3" value="1, 1, 1" />
+    <input name="transparency7" type="color3" value="1, 1, 1" />
+    <input name="transparency8" type="color3" value="1, 1, 1" />
+    <input name="transparency9" type="color3" value="1, 1, 1" />
+    <input name="transparency10" type="color3" value="1, 1, 1" />
+    <input name="transparency11" type="color3" value="1, 1, 1" />
+    <input name="transparency12" type="color3" value="1, 1, 1" />
+    <input name="transparency13" type="color3" value="1, 1, 1" />
+    <input name="transparency14" type="color3" value="1, 1, 1" />
+    <input name="transparency15" type="color3" value="1, 1, 1" />
+    <input name="useTransparency0" type="float" value="0" />
+    <input name="useTransparency1" type="float" value="0" />
+    <input name="useTransparency2" type="float" value="0" />
+    <input name="useTransparency3" type="float" value="0" />
+    <input name="useTransparency4" type="float" value="0" />
+    <input name="useTransparency5" type="float" value="0" />
+    <input name="useTransparency6" type="float" value="0" />
+    <input name="useTransparency7" type="float" value="0" />
+    <input name="useTransparency8" type="float" value="0" />
+    <input name="useTransparency9" type="float" value="0" />
+    <input name="useTransparency10" type="float" value="0" />
+    <input name="useTransparency11" type="float" value="0" />
+    <input name="useTransparency12" type="float" value="0" />
+    <input name="useTransparency13" type="float" value="0" />
+    <input name="useTransparency14" type="float" value="0" />
+    <input name="useTransparency15" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode27" type="color4" node="MayaLayeredTexture">
+    <input name="numInputs" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="color0" type="color3" value="0, 0, 0, 1" />
+    <input name="color1" type="floatarray" />
+    <input name="color2" type="color3" value="0, 0, 0, 1" />
+    <input name="color3" type="color3" value="0, 0, 0, 1" />
+    <input name="color4" type="color3" value="0, 0, 0, 1" />
+    <input name="color5" type="color3" value="0, 0, 0, 1" />
+    <input name="color6" type="color3" value="0, 0, 0, 1" />
+    <input name="color7" type="color3" value="0, 0, 0, 1" />
+    <input name="color8" type="color3" value="0, 0, 0, 1" />
+    <input name="color9" type="color3" value="0, 0, 0, 1" />
+    <input name="color10" type="color3" value="0, 0, 0, 1" />
+    <input name="color11" type="color3" value="0, 0, 0, 1" />
+    <input name="color12" type="color3" value="0, 0, 0, 1" />
+    <input name="color13" type="color3" value="0, 0, 0, 1" />
+    <input name="color14" type="color3" value="0, 0, 0, 1" />
+    <input name="color15" type="color3" value="0, 0, 0, 1" />
+    <input name="alpha0" type="float" value="1" />
+    <input name="alpha1" type="float" value="1" />
+    <input name="alpha2" type="float" value="1" />
+    <input name="alpha3" type="float" value="1" />
+    <input name="alpha4" type="float" value="1" />
+    <input name="alpha5" type="float" value="1" />
+    <input name="alpha6" type="float" value="1" />
+    <input name="alpha7" type="float" value="1" />
+    <input name="alpha8" type="float" value="1" />
+    <input name="alpha9" type="float" value="1" />
+    <input name="alpha10" type="float" value="1" />
+    <input name="alpha11" type="float" value="1" />
+    <input name="alpha12" type="float" value="1" />
+    <input name="alpha13" type="float" value="1" />
+    <input name="alpha14" type="float" value="1" />
+    <input name="alpha15" type="float" value="1" />
+    <input name="colorConnectedToAlpha0" type="float" value="0" />
+    <input name="colorConnectedToAlpha1" type="float" value="0" />
+    <input name="colorConnectedToAlpha2" type="float" value="0" />
+    <input name="colorConnectedToAlpha3" type="float" value="0" />
+    <input name="colorConnectedToAlpha4" type="float" value="0" />
+    <input name="colorConnectedToAlpha5" type="float" value="0" />
+    <input name="colorConnectedToAlpha6" type="float" value="0" />
+    <input name="colorConnectedToAlpha7" type="float" value="0" />
+    <input name="colorConnectedToAlpha8" type="float" value="0" />
+    <input name="colorConnectedToAlpha9" type="float" value="0" />
+    <input name="colorConnectedToAlpha10" type="float" value="0" />
+    <input name="colorConnectedToAlpha11" type="float" value="0" />
+    <input name="colorConnectedToAlpha12" type="float" value="0" />
+    <input name="colorConnectedToAlpha13" type="float" value="0" />
+    <input name="colorConnectedToAlpha14" type="float" value="0" />
+    <input name="colorConnectedToAlpha15" type="float" value="0" />
+    <input name="blendMode0" type="string" value="None" />
+    <input name="blendMode1" type="string" value="None" />
+    <input name="blendMode2" type="string" value="None" />
+    <input name="blendMode3" type="string" value="None" />
+    <input name="blendMode4" type="string" value="None" />
+    <input name="blendMode5" type="string" value="None" />
+    <input name="blendMode6" type="string" value="None" />
+    <input name="blendMode7" type="string" value="None" />
+    <input name="blendMode8" type="string" value="None" />
+    <input name="blendMode9" type="string" value="None" />
+    <input name="blendMode10" type="string" value="None" />
+    <input name="blendMode11" type="string" value="None" />
+    <input name="blendMode12" type="string" value="None" />
+    <input name="blendMode13" type="string" value="None" />
+    <input name="blendMode14" type="string" value="None" />
+    <input name="blendMode15" type="string" value="None" />
+    <input name="visible0" type="float" value="0" />
+    <input name="visible1" type="float" value="0" />
+    <input name="visible2" type="float" value="0" />
+    <input name="visible3" type="float" value="0" />
+    <input name="visible4" type="float" value="0" />
+    <input name="visible5" type="float" value="0" />
+    <input name="visible6" type="float" value="0" />
+    <input name="visible7" type="float" value="0" />
+    <input name="visible8" type="float" value="0" />
+    <input name="visible9" type="float" value="0" />
+    <input name="visible10" type="float" value="0" />
+    <input name="visible11" type="float" value="0" />
+    <input name="visible12" type="float" value="0" />
+    <input name="visible13" type="float" value="0" />
+    <input name="visible14" type="float" value="0" />
+    <input name="visible15" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode28" type="color4" node="MayaLeather">
+    <input name="cellColor" type="color3" value="0.373, 0.157, 0.059" />
+    <input name="creaseColor" type="color3" value="0.235, 0.118, 0" />
+    <input name="cellSize" type="float" value="0.5" />
+    <input name="density" type="float" value="1" />
+    <input name="spottyness" type="float" value="0.1" />
+    <input name="randomness" type="float" value="0.5" />
+    <input name="threshold" type="float" value="0.83" />
+    <input name="creases" type="float" value="1" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode29" type="float" node="MayaLuminance">
+    <input name="value" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode30" type="color4" node="MayaMarble">
+    <input name="fillerColor" type="color3" value="1, 1, 1" />
+    <input name="veinColor" type="color3" value="0.298, 0, 0" />
+    <input name="veinWidth" type="float" value="0.1" />
+    <input name="diffusion" type="float" value="0.5" />
+    <input name="contrast" type="float" value="0.5" />
+    <input name="amplitude" type="float" value="1.5" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="ripples" type="color3" value="1, 1, 1" />
+    <input name="depth" type="color3" value="0, 20" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode31" type="color4" node="MayaMountain">
+    <input name="snowColor" type="color3" value="1, 1, 1" />
+    <input name="rockColor" type="color3" value="0.262, 0.012, 0" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="snowRoughness" type="float" value="0.707" />
+    <input name="rockRoughness" type="float" value="0.5" />
+    <input name="boundary" type="float" value="1" />
+    <input name="snowAltitude" type="float" value="0.5" />
+    <input name="snowDropoff" type="float" value="2" />
+    <input name="snowSlope" type="float" value="0.8" />
+    <input name="depthMax" type="float" value="20" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode32" type="color3" node="MayaMultiplyDivide">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="input1" type="color3" value="0, 0, 0" />
+    <input name="input2" type="color3" value="0, 0, 0" />
+    <input name="operation" type="string" value="nop" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode33" type="color4" node="MayaNoise">
+    <input name="threshold" type="float" value="0" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="frequencyRatio" type="float" value="2" />
+    <input name="depthMax" type="float" value="3" />
+    <input name="inflection" type="float" value="0" />
+    <input name="time" type="float" value="0" />
+    <input name="frequency" type="float" value="8" />
+    <input name="implode" type="float" value="0" />
+    <input name="implodeCenter" type="color3" value="0.5, 0.5" />
+    <input name="noiseType" type="string" value="billow" />
+    <input name="density" type="float" value="1" />
+    <input name="spottyness" type="float" value="0.1" />
+    <input name="sizeRand" type="float" value="0" />
+    <input name="randomness" type="float" value="1" />
+    <input name="falloff" type="string" value="fast" />
+    <input name="numWaves" type="float" value="6" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode34" type="float" node="MayaNormalDisplacement">
+    <input name="displacement" type="float" value="0" />
+    <input name="vectorDisplacement" type="color3" value="0, 0, 0" />
+    <input name="scale" type="float" value="1" />
+    <input name="vectorEncoding" type="string" value="absolute" />
+    <input name="vectorSpace" type="string" value="object" />
+    <input name="tangent" type="color3" value="0, 0, 0" />
+    <input name="zeroValue" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode35" type="vector2" node="MayaPlace2DTexture">
+    <input name="coverage" type="color3" value="1, 1" />
+    <input name="translateFrame" type="color3" value="0, 0" />
+    <input name="rotateFrame" type="float" value="0" />
+    <input name="mirrorU" type="float" value="0" />
+    <input name="mirrorV" type="float" value="0" />
+    <input name="wrapU" type="float" value="1" />
+    <input name="wrapV" type="float" value="1" />
+    <input name="stagger" type="float" value="0" />
+    <input name="repeatUV" type="color3" value="1, 1" />
+    <input name="offsetUV" type="color3" value="0, 0" />
+    <input name="rotateUV" type="float" value="0" />
+    <input name="noiseUV" type="color3" value="0, 0" />
+    <input name="uvSetName" type="string" value="" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode36" type="vector2" node="MayaPlace3DTexture">
+    <input name="translate" type="color3" value="0, 0, 0" />
+    <input name="rotate" type="floatarray" />
+    <input name="scale" type="floatarray" />
+    <input name="shear" type="color3" value="0, 0, 0" />
+    <input name="rotateOrder" type="string" value="XYZ" />
+    <input name="rotateAxis" type="color3" value="0, 0, 0" />
+    <input name="scalePivot" type="floatarray" />
+    <input name="rotatePivot" type="floatarray" />
+    <input name="scalePivotTranslate" type="color3" value="0, 0, 0" />
+    <input name="rotatePivotTranslate" type="color3" value="0, 0, 0" />
+    <input name="inheritsTransform" type="float" value="1" />
+    <input name="parentMatrix" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode37" type="float" node="MayaPlusMinusAverage1D">
+    <input name="operation" type="string" value="sum" />
+    <input name="input1D" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode38" type="vector2" node="MayaPlusMinusAverage2D">
+    <input name="operation" type="string" value="sum" />
+    <input name="input2D" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode39" type="color3" node="MayaPlusMinusAverage3D">
+    <input name="operation" type="string" value="sum" />
+    <input name="input3D" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode40" type="color4" node="MayaProjection">
+    <input name="projType" type="string" value="off" />
+    <input name="image" type="color3" value="0, 0, 0, 1" />
+    <input name="uAngle" type="float" value="180" />
+    <input name="vAngle" type="float" value="90" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="fitType" type="string" value="camera_film_gate" />
+    <input name="fitFill" type="string" value="fill" />
+    <input name="linkedCamera" type="string" value="" />
+    <input name="cameraNearPlane" type="float" value="1" />
+    <input name="cameraHorizontalFOV" type="float" value="0.977384" />
+    <input name="cameraAspectRatio" type="float" value="1" />
+    <input name="useReferenceObject" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode41" type="color4" node="MayaQuadShadingSwitch">
+    <input name="default" type="color3" value="0.8, 0.8, 0.8, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode42" type="color4" node="MayaRamp">
+    <input name="type" type="string" value="u" />
+    <input name="interpolation" type="string" value="linear" />
+    <input name="uWave" type="float" value="0" />
+    <input name="vWave" type="float" value="0" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="noise" type="float" value="0" />
+    <input name="noiseFreq" type="float" value="0.5" />
+    <input name="position" type="floatarray" />
+    <input name="color" type="floatarray" />
+    <input name="hueNoise" type="float" value="0" />
+    <input name="satNoise" type="float" value="0" />
+    <input name="valNoise" type="float" value="0" />
+    <input name="hueNoiseFreq" type="float" value="0.5" />
+    <input name="satNoiseFreq" type="float" value="0.5" />
+    <input name="valNoiseFreq" type="float" value="0.5" />
+    <input name="curveImplicitUvs" type="float" value="1" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode43" type="color3" node="MayaRemapColor">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="inputMin" type="float" value="0" />
+    <input name="inputMax" type="float" value="1" />
+    <input name="rPositions" type="floatarray" />
+    <input name="rValues" type="floatarray" />
+    <input name="rInterpolations" type="floatarray" />
+    <input name="gPositions" type="floatarray" />
+    <input name="gValues" type="floatarray" />
+    <input name="gInterpolations" type="floatarray" />
+    <input name="bPositions" type="floatarray" />
+    <input name="bValues" type="floatarray" />
+    <input name="bInterpolations" type="floatarray" />
+    <input name="outputMin" type="float" value="0" />
+    <input name="outputMax" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode44" type="color4" node="MayaRemapHsv">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="inputMin" type="float" value="0" />
+    <input name="inputMax" type="float" value="1" />
+    <input name="hPositions" type="floatarray" />
+    <input name="hValues" type="floatarray" />
+    <input name="hInterpolations" type="floatarray" />
+    <input name="sPositions" type="floatarray" />
+    <input name="sValues" type="floatarray" />
+    <input name="sInterpolations" type="floatarray" />
+    <input name="vPositions" type="floatarray" />
+    <input name="vValues" type="floatarray" />
+    <input name="vInterpolations" type="floatarray" />
+    <input name="outputMin" type="float" value="0" />
+    <input name="outputMax" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode45" type="color3" node="MayaRemapValueToColor">
+    <input name="input" type="float" value="0" />
+    <input name="inputMin" type="float" value="0" />
+    <input name="inputMax" type="float" value="1" />
+    <input name="positions" type="floatarray" />
+    <input name="values" type="color3" value="0, 0, 0" />
+    <input name="interpolations" type="floatarray" />
+    <input name="outputMin" type="float" value="0" />
+    <input name="outputMax" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode46" type="float" node="MayaRemapValueToValue">
+    <input name="input" type="float" value="0" />
+    <input name="inputMin" type="float" value="0" />
+    <input name="inputMax" type="float" value="1" />
+    <input name="positions" type="floatarray" />
+    <input name="values" type="floatarray" />
+    <input name="interpolations" type="floatarray" />
+    <input name="outputMin" type="float" value="0" />
+    <input name="outputMax" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode47" type="color3" node="MayaReverse">
+    <input name="input" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode48" type="vector3" node="MayaRgbToHsv">
+    <input name="inRgb" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode49" type="color4" node="MayaRock">
+    <input name="color1" type="color3" value="0.235, 0, 0" />
+    <input name="color2" type="color3" value="1, 1, 1" />
+    <input name="grainSize" type="float" value="0.01" />
+    <input name="diffusion" type="float" value="1" />
+    <input name="mixRatio" type="float" value="0.5" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode50" type="float" node="MayaSamplerInfo1D">
+    <input name="mode" type="string" value="facingRatio" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode51" type="vector2" node="MayaSamplerInfo2D">
+    <input name="mode" type="string" value="uvCoord" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode52" type="color3" node="MayaSamplerInfo3D">
+    <input name="mode" type="string" value="pointWorld" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode53" type="vector3" node="MayaSetRange">
+    <input name="value" type="color3" value="0, 0, 0" />
+    <input name="min" type="color3" value="0, 0, 0" />
+    <input name="max" type="color3" value="0, 0, 0" />
+    <input name="oldMin" type="color3" value="0, 0, 0" />
+    <input name="oldMax" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode54" type="closure" node="MayaShadingEngine">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="beauty" type="closure" />
+    <input name="volume" type="closure" />
+    <input name="enable_matte" type="float" value="0" />
+    <input name="matte_color" type="color3" value="0, 0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode55" type="float" node="MayaSingleShadingSwitch">
+    <input name="default" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode56" type="color4" node="MayaSnow">
+    <input name="snowColor" type="color3" value="1, 1, 1" />
+    <input name="surfaceColor" type="color3" value="0.5, 0, 0" />
+    <input name="threshold" type="float" value="0.5" />
+    <input name="depthDecay" type="float" value="5" />
+    <input name="thickness" type="float" value="1" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode57" type="color4" node="MayaSolidFractal">
+    <input name="threshold" type="float" value="0" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="frequencyRatio" type="float" value="2" />
+    <input name="ripples" type="color3" value="1, 1, 1" />
+    <input name="depth" type="color3" value="0, 8" />
+    <input name="bias" type="float" value="0" />
+    <input name="inflection" type="float" value="0" />
+    <input name="animated" type="float" value="0" />
+    <input name="time" type="float" value="0" />
+    <input name="timeRatio" type="float" value="2" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode58" type="color4" node="MayaStucco">
+    <input name="shaker" type="float" value="20" />
+    <input name="channel1" type="color3" value="1, 0, 0" />
+    <input name="channel2" type="color3" value="0, 0, 1" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode59" type="float" node="MayaSurfaceLuminance" />
+  <nodedef name="ArnoldShadingNode60" type="float" node="MayaSurfaceShader">
+    <input name="outColor" type="color3" value="1, 1, 1" />
+    <input name="outTransparency" type="color3" value="0, 0, 0" />
+    <input name="outMatteOpacity" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode61" type="color3" node="MayaTripleShadingSwitch">
+    <input name="default" type="color3" value="0.8, 0.8, 0.8" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode62" type="vector3" node="MayaVectorDisplacement">
+    <input name="displacement" type="float" value="0" />
+    <input name="vectorDisplacement" type="color3" value="0, 0, 0" />
+    <input name="scale" type="float" value="1" />
+    <input name="vectorEncoding" type="string" value="absolute" />
+    <input name="vectorSpace" type="string" value="object" />
+    <input name="tangent" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode63" type="color4" node="MayaVolumeNoise">
+    <input name="threshold" type="float" value="0" />
+    <input name="amplitude" type="float" value="1" />
+    <input name="ratio" type="float" value="0.707" />
+    <input name="frequencyRatio" type="float" value="2" />
+    <input name="depthMax" type="float" value="3" />
+    <input name="inflection" type="float" value="0" />
+    <input name="time" type="float" value="0" />
+    <input name="frequency" type="float" value="8" />
+    <input name="scale" type="color3" value="1, 1, 1" />
+    <input name="origin" type="color3" value="0, 0, 0" />
+    <input name="implode" type="float" value="0" />
+    <input name="implodeCenter" type="color3" value="0, 0, 0" />
+    <input name="noiseType" type="string" value="Billow" />
+    <input name="density" type="float" value="1" />
+    <input name="spottyness" type="float" value="0.1" />
+    <input name="sizeRand" type="float" value="0" />
+    <input name="randomness" type="float" value="1" />
+    <input name="falloff" type="string" value="Fast" />
+    <input name="numWaves" type="float" value="5" />
+    <input name="placementMatrix" type="floatarray" />
+    <input name="wrap" type="float" value="1" />
+    <input name="local" type="float" value="0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode64" type="color4" node="MayaWater">
+    <input name="numWaves" type="float" value="8" />
+    <input name="waveTime" type="float" value="0" />
+    <input name="waveVelocity" type="float" value="1" />
+    <input name="waveAmplitude" type="float" value="0.05" />
+    <input name="waveFrequency" type="float" value="4" />
+    <input name="subWaveFrequency" type="float" value="0.125" />
+    <input name="smoothness" type="float" value="2" />
+    <input name="windUV" type="color3" value="1, 0" />
+    <input name="rippleTime" type="float" value="0" />
+    <input name="rippleFrequency" type="float" value="25" />
+    <input name="rippleAmplitude" type="float" value="0.05" />
+    <input name="dropSize" type="float" value="0.3" />
+    <input name="rippleOrigin" type="color3" value="0.5, 0.5" />
+    <input name="groupVelocity" type="float" value="1" />
+    <input name="phaseVelocity" type="float" value="2.5" />
+    <input name="spreadRate" type="float" value="0.3" />
+    <input name="spreadStart" type="float" value="0.005" />
+    <input name="reflectionBox" type="float" value="0" />
+    <input name="boxMin" type="color3" value="0, 0" />
+    <input name="boxMax" type="color3" value="1, 1" />
+    <input name="uvCoord" type="color3" value="0, 0" />
+    <input name="defaultColor" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="colorGain" type="color3" value="1, 1, 1" />
+    <input name="colorOffset" type="color3" value="0, 0, 0" />
+    <input name="alphaGain" type="float" value="1" />
+    <input name="alphaOffset" type="float" value="0" />
+    <input name="alphaIsLuminance" type="float" value="0" />
+    <input name="invert" type="float" value="0" />
+    <input name="exposure" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode65" type="color4" node="MtoaAnimColor">
+    <input name="values" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode66" type="float" node="MtoaAnimFloat">
+    <input name="values" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode67" type="float" node="MtoaAnimMatrix">
+    <input name="values" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode68" type="vector3" node="MtoaAnimPoint">
+    <input name="values" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode69" type="vector3" node="MtoaAnimVector">
+    <input name="values" type="floatarray" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode70" type="color4" node="MtoaAovWriteColor">
+    <input name="input" type="color3" value="0, 0, 0, 1" />
+    <input name="aov_name" type="string" value="" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode71" type="float" node="MtoaAovWriteFloat">
+    <input name="input" type="float" value="0" />
+    <input name="aov_name" type="string" value="" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode72" type="vector3" node="MtoaAovWriteVector">
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="aov_name" type="string" value="" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode73" type="vector2" node="MtoaAovWriteVector2">
+    <input name="input" type="color3" value="0, 0" />
+    <input name="aov_name" type="string" value="" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode74" type="float" node="MtoaCameraUvMapper">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="position" type="color3" value="0, 0, 0" />
+    <input name="look_at" type="color3" value="0, 0, -1" />
+    <input name="up" type="color3" value="0, 1, 0" />
+    <input name="matrix" type="floatarray" />
+    <input name="handedness" type="string" value="right" />
+    <input name="near_clip" type="float" value="0.0001" />
+    <input name="far_clip" type="float" value="1e+30" />
+    <input name="screen_window_min" type="color3" value="-1, -1" />
+    <input name="screen_window_max" type="color3" value="1, 1" />
+    <input name="shutter_start" type="float" value="0" />
+    <input name="shutter_end" type="float" value="0" />
+    <input name="shutter_type" type="string" value="box" />
+    <input name="shutter_curve" type="floatarray" />
+    <input name="rolling_shutter" type="string" value="off" />
+    <input name="rolling_shutter_duration" type="float" value="0" />
+    <input name="motion_start" type="float" value="0" />
+    <input name="motion_end" type="float" value="1" />
+    <input name="exposure" type="float" value="0" />
+    <input name="filtermap" type="string" value="" />
+    <input name="polymesh" type="string" value="" />
+    <input name="offset" type="float" value="0.1" />
+    <input name="grid_size" type="float" value="16" />
+    <input name="u_offset" type="float" value="0" />
+    <input name="v_offset" type="float" value="0" />
+    <input name="uv_set" type="string" value="" />
+    <input name="u_scale" type="float" value="1" />
+    <input name="v_scale" type="float" value="1" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode75" type="float" node="MtoaColorToFloat">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="input" type="color3" value="0, 0, 0, 1" />
+    <input name="component" type="string" value="luminance" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode76" type="color4" node="MtoaMeshLightMaterial">
+    <input name="color" type="floatarray" />
+    <input name="color_multiplier" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode77" type="float" node="MtoaPoint2ToFloat">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="input" type="color3" value="0, 0" />
+    <input name="component" type="string" value="X" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode78" type="float" node="MtoaPointToFloat">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="component" type="string" value="X" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode79" type="float" node="MtoaUserDataBool">
+    <input name="boolAttrName" type="string" value="" />
+    <input name="defaultValue" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode80" type="color3" node="MtoaUserDataColor">
+    <input name="colorAttrName" type="string" value="" />
+    <input name="defaultValue" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode81" type="vector2" node="MtoaUserDataVec2">
+    <input name="vec2AttrName" type="string" value="" />
+    <input name="defaultValue" type="color3" value="0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode82" type="vector3" node="MtoaUserDataVector">
+    <input name="vectorAttrName" type="string" value="" />
+    <input name="defaultValue" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode83" type="float" node="MtoaVectorToFloat">
+    <input name="__warning__" type="string" value="WARNING: This Arnold node is deprecated, please use an alternative" />
+    <input name="input" type="color3" value="0, 0, 0" />
+    <input name="component" type="string" value="length" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode84" type="color4" node="MtoaWriteColor">
+    <input name="passthrough" type="color3" value="0, 0, 0, 1" />
+    <input name="aov_input" type="color3" value="0, 0, 0" />
+    <input name="aov_name" type="string" value="" />
+    <input name="blend_opacity" type="float" value="0" />
+  </nodedef>
+  <nodedef name="ArnoldShadingNode85" type="color4" node="MtoaWriteFloat">
+    <input name="passthrough" type="color3" value="0, 0, 0, 1" />
+    <input name="aov_input" type="float" value="0" />
+    <input name="aov_name" type="string" value="" />
+    <input name="blend_opacity" type="float" value="0" />
+  </nodedef>
+</materialx>

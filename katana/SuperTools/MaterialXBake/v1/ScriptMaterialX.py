@@ -10,7 +10,10 @@ try:
 except ImportError:
     print "Can`t find Katana"
 
-ARNOLD_NODEDEFS=os.path.join(os.path.dirname(__file__), 'arnold', 'nodedefs.mtlx')
+NODEDEFS_SEARCH_PATH=[
+    os.path.join(os.path.dirname(__file__), 'arnold', 'ai_nodedefs.mtlx'),
+    os.path.join(os.path.dirname(__file__), 'arnold', 'mtoa_nodedefs.mtlx'),
+]
 
 COLOR3 = ['out', 'out.r', 'out.g', 'out.b']
 COLOR4 = ['out', 'out.r', 'out.g', 'out.b', 'out.a']
@@ -23,12 +26,12 @@ def TraverseUpstreamNodes(asnode, sets):
         sets.append(t_node)
         TraverseUpstreamNodes(t_node, sets)
 
-def getConnectedUpstreamNodes(node):
+def getConnectedUpstreamNodes(asnode):
     """
     Get upstream nodes which connected to current node.
     """
     result_nodes = []
-    inputports = node.getInputPorts()
+    inputports = asnode.getInputPorts()
     for i_port in inputports:
         port = i_port.getConnectedPort(0)
         if not port:
@@ -68,12 +71,19 @@ def getMaterialXParamsValue(asnode, param_name):
     Get MaterialX Standard Value from ArnoldShadingNode.
     """
     def _getType(asnode, param_name):
-        doc = mx.createDocument()
-        mx.readFromXmlFile(doc, ARNOLD_NODEDEFS)
-
         input_type = asnode.getParameter('nodeType').getValue(0)
         # Traverse the document tree in depth-first order.
-        return doc.getNodeDef(input_type).getInput(param_name).getType()
+        for nodedef_file in NODEDEFS_SEARCH_PATH:
+            doc = mx.createDocument()
+            mx.readFromXmlFile(doc, nodedef_file)
+            input_ptr = doc.getNodeDef(input_type)
+            if input_ptr:
+                input_param = input_ptr.getInput(param_name)
+                # Some params might not record in the NodeDefs.
+                if input_param:
+                    return input_param.getType()
+            else:
+                continue
     param_type = asnode.getParameter("parameters.%s.value"%param_name).getType()
     input_type = _getType(asnode, param_name)
     # If parameter is katana type string
@@ -90,13 +100,17 @@ def getMaterialXParamsValue(asnode, param_name):
                 return "boolean", "false"
         elif input_type == "float":
             return "float", asnode.getParameter("parameters.%s.value"%param_name).getValue(0)
+        else:
+            log.error("Not support unknown yet! -- %s : %s"%(asnode.getName(), param_name) )
+            return "", ""
     # If parameter is katana type numberArray
     elif param_type == "numberArray":
-        # Find out the tuple type,color or vector?
-        _size =  asnode.getParameter("parameters.%s.value"%param_name).getTupleSize()
+        # Find out the tuple type,color or vector or some else?
+        param_value = asnode.getParameter("parameters.%s.value"%param_name)
         _tuple = []
-        for i in range(0, _size):
-            _tuple.append(asnode.getParameter("parameters.%s.value.i%i"%(param_name, i)).getValue(0))
+        for child in param_value.getChildren():
+            _tuple.append(child.getValue(0))
+
         if input_type == "color2":
             return "color2", mx.Color2(_tuple[0], _tuple[1])
         elif input_type == "color3":
@@ -106,9 +120,22 @@ def getMaterialXParamsValue(asnode, param_name):
         elif input_type == "vector2":
             return "vector2", mx.Vector2(_tuple[0], _tuple[1])
         elif input_type == "vector3":
+            print "##", asnode.getName(), param_name
             return "vector3", mx.Vector3(_tuple[0], _tuple[1], _tuple[2])
         elif input_type == "vector4":
             return "vector4", mx.Vector4(_tuple[0], _tuple[1], _tuple[2], _tuple[3])
+        elif input_type == "floatarray":
+            log.error("Not support floatarray yet! -- %s : %s"%(asnode.getName(), param_name) )
+            return "floatarray", ""
+        elif input_type == "color3array":
+            log.error("Not support color3array yet! -- %s : %s"%(asnode.getName(), param_name) )
+            return "color3array", ""
+        elif input_type == "integerarray":
+            log.error("Not support integerarray yet! -- %s : %s"%(asnode.getName(), param_name) )
+            return "integerarray", ""
+        else:
+            log.error("Not support unknown yet! -- %s : %s"%(asnode.getName(), param_name) )
+            return "", ""
 
 def removeSwizzleSuffix(param_name):
     """
@@ -141,12 +168,16 @@ def SetMaterialXShaderRefParams(mxnode, asnode):
             bind_input.setOutputString("out")
         else:
             # If katana param is not enabled, skip!
-            print "bind_input:", param_name, isKatanaParamEnable(asnode, param_name)
             if not isKatanaParamEnable(asnode, param_name):
                 continue
             _type, _value = getMaterialXParamsValue(asnode, param_name)
-            bind_input = mxnode.addBindInput(param_name, _type)
-            bind_input.setValue(_value)
+
+            # If type is unknown, skip!
+            if _type:
+                bind_input = mxnode.addBindInput(param_name, _type)
+                # If _value == "", Skip!
+                if _value:
+                    bind_input.setValue(_value)
 
 def SetMaterialXNodeRefParams(mxnode, asnode):
     """
@@ -168,8 +199,10 @@ def SetMaterialXNodeRefParams(mxnode, asnode):
             # If katana param is not enabled, skip!
             if not isKatanaParamEnable(asnode, param_name):
                 continue
+
             _type, _value = getMaterialXParamsValue(asnode, param_name)
-            mxnode.setInputValue(param_name, _value, _type)
+            if _type and _value:
+                mxnode.setInputValue(param_name, _value, _type)
 
 
 def buildMXMaterial(document, ktnnode):
@@ -183,13 +216,16 @@ def buildMXMaterial(document, ktnnode):
     return mx_material
 
 def buildMXShaderRef(document, asnode):
+    """
+    Create MaterialX ShaderRef and inside contents.
+    """
     material_name = asnode.getOutputPortByIndex(0).getConnectedPort(0).getNode().getName()
     material = document.getMaterial("Material__" + material_name)
     shader_ref_name = asnode.getName()
-    shader_refinput_type = asnode.getParameter('nodeType').getValue(0)
+    input_type = asnode.getParameter('nodeType').getValue(0)
     mx_shader_ref = material.getShaderRef("ShaderRef__"+shader_ref_name)    
     if not mx_shader_ref:
-        mx_shader_ref = material.addShaderRef("ShaderRef__"+shader_ref_name, shader_refinput_type)
+        mx_shader_ref = material.addShaderRef("ShaderRef__"+shader_ref_name, input_type)
         #~ Set shaderref parameter
         SetMaterialXShaderRefParams(mx_shader_ref, asnode)
     return mx_shader_ref
@@ -226,14 +262,17 @@ def export(sets, saveTo):
     # Create a document.
     doc = mx.createDocument()
     # Include Arnold nodedefs.
-    mx.prependXInclude(doc, ARNOLD_NODEDEFS)
-
+    for nodedef_file in NODEDEFS_SEARCH_PATH:
+        mx.prependXInclude(doc, nodedef_file)
     for look_name in sets:
         node_sets = sets[look_name]
 
         for node_set in node_sets:
             collection_node_name = node_set[0]
             network_material_node_name = node_set[1]
+            # If polymesh not be assigned a NetworkMaterial, skip!
+            if not network_material_node_name:
+                continue
             # {nm_node} : NetworkMaterialNode
             nm_node = NodegraphAPI.GetNode(network_material_node_name)
             # The material node might be surafceShader or displacementShader

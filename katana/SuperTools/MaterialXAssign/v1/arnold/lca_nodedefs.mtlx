@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<materialx version="1.36">
+  <typedef name="closure" semantic="shader" />
+  <nodedef name="lc_ani_preview" type="closure" node="lc_ani_preview">
+    <input name="color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="mint" type="float" value="0" />
+    <input name="maxt" type="float" value="2" />
+    <input name="spread" type="float" value="1" />
+    <input name="falloff" type="float" value="0.5" />
+    <input name="nsamples" type="integer" value="4" />
+    <input name="ndim" type="integer" value="2" />
+  </nodedef>
+  <nodedef name="lc_anisotopy_fixed" type="vector3" node="lc_anisotopy_fixed">
+    <input name="anisotopy_vector" type="string" value="dPdx" />
+  </nodedef>
+  <nodedef name="lc_color_convert" type="color3" node="lc_color_convert">
+    <input name="lc_input" type="color3" value="1, 1, 1" />
+    <input name="lc_from_space" type="string" value="RGB" />
+    <input name="lc_to_space" type="string" value="HSL" />
+  </nodedef>
+  <nodedef name="lc_color_correct" type="color3" node="lc_color_correct">
+    <input name="lc_input" type="color3" value="1, 1, 1" />
+    <input name="lc_invert_color" type="boolean" value="false" />
+    <input name="lc_hue_shift" type="float" value="0" />
+    <input name="lc_saturation" type="float" value="1" />
+    <input name="lc_brighten" type="float" value="0" />
+    <input name="lc_contrast" type="float" value="1" />
+    <input name="lc_contrast_pivot" type="float" value="0.18" />
+    <input name="lc_exposure" type="float" value="0" />
+    <input name="lc_gain" type="float" value="1" />
+    <input name="lc_gamma" type="float" value="1" />
+    <input name="lc_mask" type="float" value="1" />
+  </nodedef>
+  <nodedef name="lc_condition_closure" type="closure" node="lc_condition_closure">
+    <input name="lc_operation" type="string" value="A==B" />
+    <input name="lc_A" type="float" value="0" />
+    <input name="lc_B" type="float" value="0" />
+    <input name="lc_true_closure" type="closure" />
+    <input name="lc_false_closure" type="closure" />
+  </nodedef>
+  <nodedef name="lc_condition_color" type="color3" node="lc_condition_color">
+    <input name="lc_operation" type="string" value="A==B" />
+    <input name="lc_A" type="float" value="0" />
+    <input name="lc_B" type="float" value="0" />
+    <input name="lc_true_color" type="color3" value="1, 1, 1" />
+    <input name="lc_false_color" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="lc_condition_float" type="float" node="lc_condition_float">
+    <input name="lc_operation" type="string" value="A==B" />
+    <input name="lc_A" type="float" value="0" />
+    <input name="lc_B" type="float" value="0" />
+    <input name="lc_true_float" type="float" value="1" />
+    <input name="lc_false_float" type="float" value="0" />
+  </nodedef>
+  <nodedef name="lc_histogram_scan" type="color3" node="lc_histogram_scan">
+    <input name="lc_input" type="color3" value="1, 1, 1" />
+    <input name="lc_position" type="vector3" value="0, 0, 0" />
+    <input name="lc_contrast" type="vector3" value="0.7, 0.7, 0.7" />
+    <input name="lc_invert" type="boolean" value="false" />
+    <input name="lc_clamp" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="lc_layer_closure" type="closure" node="lc_layer_closure">
+    <input name="lc_layer1" type="closure" />
+    <input name="lc_layer2" type="closure" />
+    <input name="lc_mask" type="float" value="0" />
+  </nodedef>
+  <nodedef name="lc_layer_color" type="color3" node="lc_layer_color">
+    <input name="lc_layer1" type="color3" value="0, 0, 0" />
+    <input name="lc_layer1_blend" type="string" value="Normal" />
+    <input name="lc_layer1_alpha" type="float" value="1" />
+    <input name="lc_layer1_enabled" type="boolean" value="true" />
+    <input name="lc_layer2" type="color3" value="0, 0, 0" />
+    <input name="lc_layer2_blend" type="string" value="Normal" />
+    <input name="lc_layer2_alpha" type="float" value="1" />
+    <input name="lc_layer2_enabled" type="boolean" value="false" />
+    <input name="lc_layer3" type="color3" value="0, 0, 0" />
+    <input name="lc_layer3_blend" type="string" value="Normal" />
+    <input name="lc_layer3_alpha" type="float" value="1" />
+    <input name="lc_layer3_enabled" type="boolean" value="false" />
+    <input name="lc_layer4" type="color3" value="0, 0, 0" />
+    <input name="lc_layer4_blend" type="string" value="Normal" />
+    <input name="lc_layer4_alpha" type="float" value="1" />
+    <input name="lc_layer4_enabled" type="boolean" value="false" />
+    <input name="lc_layer5" type="color3" value="0, 0, 0" />
+    <input name="lc_layer5_blend" type="string" value="Normal" />
+    <input name="lc_layer5_alpha" type="float" value="1" />
+    <input name="lc_layer5_enabled" type="boolean" value="false" />
+    <input name="lc_layer6" type="color3" value="0, 0, 0" />
+    <input name="lc_layer6_blend" type="string" value="Normal" />
+    <input name="lc_layer6_alpha" type="float" value="1" />
+    <input name="lc_layer6_enabled" type="boolean" value="false" />
+    <input name="lc_layer7" type="color3" value="0, 0, 0" />
+    <input name="lc_layer7_blend" type="string" value="Normal" />
+    <input name="lc_layer7_alpha" type="float" value="1" />
+    <input name="lc_layer7_enabled" type="boolean" value="false" />
+    <input name="lc_layer8" type="color3" value="0, 0, 0" />
+    <input name="lc_layer8_blend" type="string" value="Normal" />
+    <input name="lc_layer8_alpha" type="float" value="1" />
+    <input name="lc_layer8_enabled" type="boolean" value="false" />
+    <input name="lc_clamp_result" type="float" value="1" />
+  </nodedef>
+  <nodedef name="lc_layer_normal" type="vector3" node="lc_layer_normal">
+    <input name="lc_layer0" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer0_strength" type="float" value="1" />
+    <input name="lc_layer1" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer1_blend" type="string" value="ReorientedNormalMapping" />
+    <input name="lc_layer1_strength" type="float" value="1" />
+    <input name="lc_layer1_enabled" type="boolean" value="false" />
+    <input name="lc_layer2" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer2_blend" type="string" value="ReorientedNormalMapping" />
+    <input name="lc_layer2_strength" type="float" value="1" />
+    <input name="lc_layer2_enabled" type="boolean" value="false" />
+    <input name="lc_layer3" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer3_blend" type="string" value="ReorientedNormalMapping" />
+    <input name="lc_layer3_strength" type="float" value="1" />
+    <input name="lc_layer3_enabled" type="boolean" value="false" />
+    <input name="lc_layer4" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer4_blend" type="string" value="ReorientedNormalMapping" />
+    <input name="lc_layer4_strength" type="float" value="1" />
+    <input name="lc_layer4_enabled" type="boolean" value="false" />
+    <input name="lc_layer5" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer5_blend" type="string" value="ReorientedNormalMapping" />
+    <input name="lc_layer5_strength" type="float" value="1" />
+    <input name="lc_layer5_enabled" type="boolean" value="false" />
+    <input name="lc_layer6" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_layer6_blend" type="string" value="ReorientedNormalMapping" />
+    <input name="lc_layer6_strength" type="float" value="1" />
+    <input name="lc_layer6_enabled" type="boolean" value="false" />
+    <input name="lc_normalize_result" type="float" value="0" />
+  </nodedef>
+  <nodedef name="lc_noise_fractal" type="color3" node="lc_noise_fractal">
+    <input name="lc_mode" type="string" value="scalar" />
+    <input name="lc_space" type="string" value="world" />
+    <input name="lc_offest" type="vector3" value="0, 0, 0" />
+    <input name="lc_scale" type="vector3" value="1, 1, 1" />
+    <input name="lc_rot" type="vector3" value="0, 0, 0" />
+    <input name="lc_value" type="float" value="0" />
+    <input name="lc_octaves" type="float" value="8" />
+    <input name="lc_gain" type="float" value="0.6" />
+    <input name="lc_lacunarity" type="float" value="2" />
+    <input name="lc_distortion" type="float" value="0" />
+    <input name="lc_turbulent" type="float" value="0" />
+    <input name="lc_clamp_mode" type="float" value="1" />
+    <input name="lc_time" type="float" value="0" />
+    <input name="lc_color1" type="color3" value="0, 0, 0" />
+    <input name="lc_color2" type="color3" value="1, 1, 1" />
+    <input name="lc_position" type="vector3" value="0, 0, 0" />
+  </nodedef>
+  <nodedef name="lc_parallax_map" type="closure" node="lc_parallax_map">
+    <input name="standard_surface" type="closure" />
+    <input name="parallax_map" type="color3" value="1, 1, 1" />
+    <input name="parallax_value" type="float" value="0" />
+  </nodedef>
+  <nodedef name="lc_plant_color" type="color3" node="lc_plant_color">
+    <input name="intputColor" type="color3" value="1, 1, 1" />
+    <input name="color_data" type="string" value="lca_ground_color" />
+    <input name="color_default" type="color3" value="1, 1, 0" />
+    <input name="intensity_data" type="string" value="lca_ground_mask" />
+    <input name="intensity_default" type="float" value="0" />
+    <input name="lca_h_mask_data" type="string" value="lca_h_mask" />
+    <input name="lca_h_mask_default" type="float" value="1" />
+    <input name="lca_s_mask_data" type="string" value="lca_s_mask" />
+    <input name="lca_s_mask_default" type="float" value="1" />
+    <input name="lca_v_mask_data" type="string" value="lca_v_mask" />
+    <input name="lca_v_mask_default" type="float" value="0" />
+    <input name="vaule_data" type="string" value="lca_ground_value" />
+    <input name="value_default" type="float" value="1" />
+  </nodedef>
+  <nodedef name="lc_ramp_p4" type="color3" node="lc_ramp_p4">
+    <input name="lc_type" type="string" value="u" />
+    <input name="lc_interp" type="string" value="linear" />
+    <input name="lc_positions_1" type="float" value="0" />
+    <input name="lc_positions_2" type="float" value="0" />
+    <input name="lc_positions_3" type="float" value="1" />
+    <input name="lc_positions_4" type="float" value="1" />
+    <input name="lc_colors_1" type="color3" value="0, 0, 0" />
+    <input name="lc_colors_2" type="color3" value="0, 0, 0" />
+    <input name="lc_colors_3" type="color3" value="1, 1, 1" />
+    <input name="lc_colors_4" type="color3" value="1, 1, 1" />
+  </nodedef>
+  <nodedef name="lc_remap_color" type="color3" node="lc_remap_color">
+    <input name="lc_input" type="color3" value="0, 0, 0" />
+    <input name="lc_gamma" type="float" value="1" />
+    <input name="lc_saturation" type="float" value="1" />
+    <input name="lc_hue_offset" type="float" value="0" />
+    <input name="lc_contrast" type="float" value="1" />
+    <input name="lc_contrast_pivot" type="float" value="0.18" />
+    <input name="lc_gain" type="float" value="1" />
+    <input name="lc_exposure" type="float" value="0" />
+    <input name="lc_mask" type="float" value="1" />
+  </nodedef>
+  <nodedef name="lc_remap_float" type="float" node="lc_remap_float">
+    <input name="lc_input" type="float" value="0" />
+    <input name="lc_input_min" type="float" value="0" />
+    <input name="lc_input_max" type="float" value="1" />
+    <input name="lc_contrast" type="float" value="1" />
+    <input name="lc_contrast_pivot" type="float" value="0.5" />
+    <input name="lc_bias" type="float" value="0.5" />
+    <input name="lc_gain" type="float" value="0.5" />
+    <input name="lc_output_min" type="float" value="0" />
+    <input name="lc_output_max" type="float" value="1" />
+    <input name="lc_clamp_enable" type="boolean" value="true" />
+    <input name="lc_threshold" type="float" value="0" />
+    <input name="lc_clamp_min" type="float" value="0" />
+    <input name="lc_clamp_max" type="float" value="1" />
+    <input name="lc_mask" type="float" value="1" />
+  </nodedef>
+  <nodedef name="lc_remap_normal" type="color3" node="lc_remap_normal">
+    <input name="lc_input" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_intensity" type="float" value="1" />
+    <input name="lc_invert_x" type="boolean" value="false" />
+    <input name="lc_invert_y" type="boolean" value="false" />
+    <input name="lc_invert_z" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="lc_switch_closure" type="color3" node="lc_switch_closure">
+    <input name="lc_index" type="float" value="0" />
+    <input name="lc_input0" type="closure" />
+    <input name="lc_input1" type="closure" />
+    <input name="lc_input2" type="closure" />
+    <input name="lc_input3" type="closure" />
+    <input name="lc_input4" type="closure" />
+    <input name="lc_input5" type="closure" />
+    <input name="lc_input6" type="closure" />
+    <input name="lc_input7" type="closure" />
+    <input name="lc_input8" type="closure" />
+    <input name="lc_input9" type="closure" />
+    <input name="lc_input10" type="closure" />
+    <input name="lc_input11" type="closure" />
+    <input name="lc_input12" type="closure" />
+    <input name="lc_input13" type="closure" />
+    <input name="lc_input14" type="closure" />
+    <input name="lc_input15" type="closure" />
+    <input name="lc_input16" type="closure" />
+    <input name="lc_input17" type="closure" />
+    <input name="lc_input18" type="closure" />
+    <input name="lc_input19" type="closure" />
+    <input name="lc_input20" type="closure" />
+    <input name="lc_threshold" type="float" value="0.5" />
+  </nodedef>
+  <nodedef name="lc_switch_color" type="color3" node="lc_switch_color">
+    <input name="lc_index" type="float" value="0" />
+    <input name="lc_input0" type="color3" value="0, 0, 0" />
+    <input name="lc_input1" type="color3" value="1, 1, 1" />
+    <input name="lc_input2" type="color3" value="1, 1, 0" />
+    <input name="lc_input3" type="color3" value="1, 0, 0" />
+    <input name="lc_input4" type="color3" value="0, 1, 0" />
+    <input name="lc_input5" type="color3" value="0, 0, 1" />
+    <input name="lc_input6" type="color3" value="0, 1, 1" />
+    <input name="lc_input7" type="color3" value="1, 1, 0" />
+    <input name="lc_input8" type="color3" value="1, 0, 1" />
+    <input name="lc_input9" type="color3" value="1, 0.5, 0" />
+    <input name="lc_input10" type="color3" value="1, 0, 0.5" />
+    <input name="lc_input11" type="color3" value="0.5, 1, 0" />
+    <input name="lc_input12" type="color3" value="0.5, 0, 1" />
+    <input name="lc_input13" type="color3" value="0.5, 0.5, 1" />
+    <input name="lc_input14" type="color3" value="0.5, 1, 0.5" />
+    <input name="lc_input15" type="color3" value="1, 0.5, 0.5" />
+    <input name="lc_input16" type="color3" value="0.5, 0.5, 0.5" />
+    <input name="lc_input17" type="color3" value="0.5, 0, 0.5" />
+    <input name="lc_input18" type="color3" value="0, 0.5, 0.5" />
+    <input name="lc_input19" type="color3" value="0.5, 0.5, 0" />
+    <input name="lc_input20" type="color3" value="0.1, 0.1, 0.1" />
+    <input name="lc_threshold" type="float" value="0.5" />
+    <input name="lc_smooth" type="boolean" value="false" />
+  </nodedef>
+  <nodedef name="lc_switch_float" type="color3" node="lc_switch_float">
+    <input name="lc_index" type="float" value="0" />
+    <input name="lc_input0" type="float" value="0" />
+    <input name="lc_input1" type="float" value="0" />
+    <input name="lc_input2" type="float" value="0" />
+    <input name="lc_input3" type="float" value="0" />
+    <input name="lc_input4" type="float" value="0" />
+    <input name="lc_input5" type="float" value="0" />
+    <input name="lc_input6" type="float" value="0" />
+    <input name="lc_input7" type="float" value="0" />
+    <input name="lc_input8" type="float" value="0" />
+    <input name="lc_input9" type="float" value="0" />
+    <input name="lc_input10" type="float" value="0" />
+    <input name="lc_input11" type="float" value="0" />
+    <input name="lc_input12" type="float" value="0" />
+    <input name="lc_input13" type="float" value="0" />
+    <input name="lc_input14" type="float" value="0" />
+    <input name="lc_input15" type="float" value="0" />
+    <input name="lc_input16" type="float" value="0" />
+    <input name="lc_input17" type="float" value="0" />
+    <input name="lc_input18" type="float" value="0" />
+    <input name="lc_input19" type="float" value="0" />
+    <input name="lc_input20" type="float" value="0" />
+    <input name="lc_threshold" type="float" value="0.5" />
+  </nodedef>
+  <nodedef name="lc_uv_emitter" type="vector2" node="lc_uv_emitter">
+    <input name="input_u" type="float" value="1" />
+    <input name="input_v" type="float" value="1" />
+    <input name="coverage" type="vector2" value="1, 1" />
+    <input name="translateFrame" type="vector2" value="0, 0" />
+    <input name="rotateFrame" type="float" value="0" />
+    <input name="mirrorU" type="boolean" value="false" />
+    <input name="mirrorV" type="boolean" value="false" />
+    <input name="wrapU" type="boolean" value="true" />
+    <input name="wrapV" type="boolean" value="true" />
+    <input name="stagger" type="boolean" value="false" />
+    <input name="repeatUV" type="vector2" value="1, 1" />
+    <input name="offsetUV" type="vector2" value="0, 0" />
+    <input name="rotateUV" type="float" value="0" />
+    <input name="noiseUV" type="vector2" value="0, 0" />
+    <input name="uvSetName" type="string" value="" />
+  </nodedef>
+</materialx>
