@@ -10,7 +10,7 @@ from Katana import DrawingModule
 class MaterialXAssignNode(NodegraphAPI.SuperTool):
     def __init__(self):
         self.hideNodegraphGroupControls()
-        self.setContentLocked(True)
+        # self.setContentLocked(True)
 
         self.addInputPort("input")
 

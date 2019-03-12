@@ -157,7 +157,7 @@ class MaterialXBakeNode(NodegraphAPI.SuperTool):
         widget.show()
 
     def bake(self):
-        import ScriptMaterialX as MateX
+        import KTMaterialXTools.ScriptMaterialX as MateX
         reload(MateX)
         switch_node = SA.GetRefNode(self, 'switch')
         merge_node = SA.GetRefNode(self, 'merge')

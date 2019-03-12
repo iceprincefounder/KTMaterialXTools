@@ -12,6 +12,7 @@ except ImportError:
 
 NODEDEFS_SEARCH_PATH=[
     os.path.join(os.path.dirname(__file__), 'arnold', 'ai_nodedefs.mtlx'),
+    os.path.join(os.path.dirname(__file__), 'arnold', 'lca_nodedefs.mtlx'),
     os.path.join(os.path.dirname(__file__), 'arnold', 'mtoa_nodedefs.mtlx'),
 ]
 

@@ -1,4 +1,4 @@
-from Katana import Nodes3DAPI, QtCore, QtGui, UI4, QT4Widgets, QT4FormWidgets
+from Katana import Nodes3DAPI, NodegraphAPI, QtCore, QtGui, UI4, QT4Widgets, QT4FormWidgets
 
 import ScriptActions as SA
 
@@ -98,6 +98,9 @@ class MaterialXAssignEditor(QtGui.QWidget):
             if operator_path.find(location) >= 0:
                 continue
             if operator_path in callback:
+                continue
+            # if operator_path is "", skip!
+            if operator_path == "":
                 continue
             new_location = new_location + "|" + operator_path
         param.setValue(new_location, 0)

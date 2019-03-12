@@ -21,7 +21,7 @@
   </nodedef>
   <nodedef name="lc_color_correct" type="color3" node="lc_color_correct">
     <input name="lc_input" type="color3" value="1, 1, 1" />
-    <input name="lc_invert_color" type="boolean" value="false" />
+    <input name="lc_invert_color" type="integer" value="0" />
     <input name="lc_hue_shift" type="float" value="0" />
     <input name="lc_saturation" type="float" value="1" />
     <input name="lc_brighten" type="float" value="0" />
