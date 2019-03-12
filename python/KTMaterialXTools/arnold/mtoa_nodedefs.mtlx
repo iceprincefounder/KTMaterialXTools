@@ -688,7 +688,7 @@
     <input name="invert" type="float" value="0" />
     <input name="exposure" type="float" value="0" />
   </nodedef>
-  <nodedef name="MayaNormalDisplacement" type="float" node="MayaNormalDisplacement">
+  <nodedef name="MayaNormalDisplacement" type="displacementshader" node="MayaNormalDisplacement">
     <input name="displacement" type="float" value="0" />
     <input name="vectorDisplacement" type="color3" value="0, 0, 0" />
     <input name="scale" type="float" value="1" />
@@ -958,7 +958,7 @@
   <nodedef name="MayaTripleShadingSwitch" type="color3" node="MayaTripleShadingSwitch">
     <input name="default" type="color3" value="0.8, 0.8, 0.8" />
   </nodedef>
-  <nodedef name="MayaVectorDisplacement" type="vector3" node="MayaVectorDisplacement">
+  <nodedef name="MayaVectorDisplacement" type="displacementshader" node="MayaVectorDisplacement">
     <input name="displacement" type="float" value="0" />
     <input name="vectorDisplacement" type="color3" value="0, 0, 0" />
     <input name="scale" type="float" value="1" />
