@@ -57,8 +57,8 @@
     <input name="lc_input" type="color3" value="1, 1, 1" />
     <input name="lc_position" type="vector3" value="0, 0, 0" />
     <input name="lc_contrast" type="vector3" value="0.7, 0.7, 0.7" />
-    <input name="lc_invert" type="boolean" value="false" />
-    <input name="lc_clamp" type="boolean" value="false" />
+    <input name="lc_invert" type="integer" value="0" />
+    <input name="lc_clamp" type="integer" value="0" />
   </nodedef>
   <nodedef name="lc_layer_closure" type="closure" node="lc_layer_closure">
     <input name="lc_layer1" type="closure" />
@@ -69,35 +69,35 @@
     <input name="lc_layer1" type="color3" value="0, 0, 0" />
     <input name="lc_layer1_blend" type="string" value="Normal" />
     <input name="lc_layer1_alpha" type="float" value="1" />
-    <input name="lc_layer1_enabled" type="boolean" value="true" />
+    <input name="lc_layer1_enabled" type="integer" value="1" />
     <input name="lc_layer2" type="color3" value="0, 0, 0" />
     <input name="lc_layer2_blend" type="string" value="Normal" />
     <input name="lc_layer2_alpha" type="float" value="1" />
-    <input name="lc_layer2_enabled" type="boolean" value="false" />
+    <input name="lc_layer2_enabled" type="integer" value="0" />
     <input name="lc_layer3" type="color3" value="0, 0, 0" />
     <input name="lc_layer3_blend" type="string" value="Normal" />
     <input name="lc_layer3_alpha" type="float" value="1" />
-    <input name="lc_layer3_enabled" type="boolean" value="false" />
+    <input name="lc_layer3_enabled" type="integer" value="0" />
     <input name="lc_layer4" type="color3" value="0, 0, 0" />
     <input name="lc_layer4_blend" type="string" value="Normal" />
     <input name="lc_layer4_alpha" type="float" value="1" />
-    <input name="lc_layer4_enabled" type="boolean" value="false" />
+    <input name="lc_layer4_enabled" type="integer" value="0" />
     <input name="lc_layer5" type="color3" value="0, 0, 0" />
     <input name="lc_layer5_blend" type="string" value="Normal" />
     <input name="lc_layer5_alpha" type="float" value="1" />
-    <input name="lc_layer5_enabled" type="boolean" value="false" />
+    <input name="lc_layer5_enabled" type="integer" value="0" />
     <input name="lc_layer6" type="color3" value="0, 0, 0" />
     <input name="lc_layer6_blend" type="string" value="Normal" />
     <input name="lc_layer6_alpha" type="float" value="1" />
-    <input name="lc_layer6_enabled" type="boolean" value="false" />
+    <input name="lc_layer6_enabled" type="integer" value="0" />
     <input name="lc_layer7" type="color3" value="0, 0, 0" />
     <input name="lc_layer7_blend" type="string" value="Normal" />
     <input name="lc_layer7_alpha" type="float" value="1" />
-    <input name="lc_layer7_enabled" type="boolean" value="false" />
+    <input name="lc_layer7_enabled" type="integer" value="0" />
     <input name="lc_layer8" type="color3" value="0, 0, 0" />
     <input name="lc_layer8_blend" type="string" value="Normal" />
     <input name="lc_layer8_alpha" type="float" value="1" />
-    <input name="lc_layer8_enabled" type="boolean" value="false" />
+    <input name="lc_layer8_enabled" type="integer" value="0" />
     <input name="lc_clamp_result" type="float" value="1" />
   </nodedef>
   <nodedef name="lc_layer_normal" type="vector3" node="lc_layer_normal">
@@ -106,27 +106,27 @@
     <input name="lc_layer1" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_layer1_blend" type="string" value="ReorientedNormalMapping" />
     <input name="lc_layer1_strength" type="float" value="1" />
-    <input name="lc_layer1_enabled" type="boolean" value="false" />
+    <input name="lc_layer1_enabled" type="integer" value="0" />
     <input name="lc_layer2" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_layer2_blend" type="string" value="ReorientedNormalMapping" />
     <input name="lc_layer2_strength" type="float" value="1" />
-    <input name="lc_layer2_enabled" type="boolean" value="false" />
+    <input name="lc_layer2_enabled" type="integer" value="0" />
     <input name="lc_layer3" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_layer3_blend" type="string" value="ReorientedNormalMapping" />
     <input name="lc_layer3_strength" type="float" value="1" />
-    <input name="lc_layer3_enabled" type="boolean" value="false" />
+    <input name="lc_layer3_enabled" type="integer" value="0" />
     <input name="lc_layer4" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_layer4_blend" type="string" value="ReorientedNormalMapping" />
     <input name="lc_layer4_strength" type="float" value="1" />
-    <input name="lc_layer4_enabled" type="boolean" value="false" />
+    <input name="lc_layer4_enabled" type="integer" value="0" />
     <input name="lc_layer5" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_layer5_blend" type="string" value="ReorientedNormalMapping" />
     <input name="lc_layer5_strength" type="float" value="1" />
-    <input name="lc_layer5_enabled" type="boolean" value="false" />
+    <input name="lc_layer5_enabled" type="integer" value="0" />
     <input name="lc_layer6" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_layer6_blend" type="string" value="ReorientedNormalMapping" />
     <input name="lc_layer6_strength" type="float" value="1" />
-    <input name="lc_layer6_enabled" type="boolean" value="false" />
+    <input name="lc_layer6_enabled" type="integer" value="0" />
     <input name="lc_normalize_result" type="float" value="0" />
   </nodedef>
   <nodedef name="lc_noise_fractal" type="color3" node="lc_noise_fractal">
@@ -200,7 +200,7 @@
     <input name="lc_gain" type="float" value="0.5" />
     <input name="lc_output_min" type="float" value="0" />
     <input name="lc_output_max" type="float" value="1" />
-    <input name="lc_clamp_enable" type="boolean" value="true" />
+    <input name="lc_clamp_enable" type="integer" value="1" />
     <input name="lc_threshold" type="float" value="0" />
     <input name="lc_clamp_min" type="float" value="0" />
     <input name="lc_clamp_max" type="float" value="1" />
@@ -209,9 +209,9 @@
   <nodedef name="lc_remap_normal" type="color3" node="lc_remap_normal">
     <input name="lc_input" type="color3" value="0.5, 0.5, 1" />
     <input name="lc_intensity" type="float" value="1" />
-    <input name="lc_invert_x" type="boolean" value="false" />
-    <input name="lc_invert_y" type="boolean" value="false" />
-    <input name="lc_invert_z" type="boolean" value="false" />
+    <input name="lc_invert_x" type="integer" value="0" />
+    <input name="lc_invert_y" type="integer" value="0" />
+    <input name="lc_invert_z" type="integer" value="0" />
   </nodedef>
   <nodedef name="lc_switch_closure" type="color3" node="lc_switch_closure">
     <input name="lc_index" type="float" value="0" />
@@ -262,7 +262,7 @@
     <input name="lc_input19" type="color3" value="0.5, 0.5, 0" />
     <input name="lc_input20" type="color3" value="0.1, 0.1, 0.1" />
     <input name="lc_threshold" type="float" value="0.5" />
-    <input name="lc_smooth" type="boolean" value="false" />
+    <input name="lc_smooth" type="integer" value="0" />
   </nodedef>
   <nodedef name="lc_switch_float" type="color3" node="lc_switch_float">
     <input name="lc_index" type="float" value="0" />

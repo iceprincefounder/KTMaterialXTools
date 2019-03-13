@@ -19,6 +19,10 @@ NODEDEFS_SEARCH_PATH=[
 COLOR3 = ['out', 'out.r', 'out.g', 'out.b']
 COLOR4 = ['out', 'out.r', 'out.g', 'out.b', 'out.a']
 SWIZZLE_SUFFIX = ['.r', '.g', '.b', '.a', '.x', '.y', '.z']
+ARNOLD_SHADER_TYPE = {
+    "arnoldSurface":"surfaceshader",
+    "arnoldDisplacement":"displacementshader",
+}
 
 def TraverseUpstreamNodes(asnode, sets):
     log.info("Traverse current node -%s"%asnode)
@@ -222,13 +226,16 @@ def buildMXShaderRef(document, asnode):
     """
     material_name = asnode.getOutputPortByIndex(0).getConnectedPort(0).getNode().getName()
     material = document.getMaterial("Material__" + material_name)
+    nm_node_port_name = asnode.getOutputPortByIndex(0).getConnectedPort(0).getName()
+    shader_ref_type = ARNOLD_SHADER_TYPE[nm_node_port_name]
     shader_ref_name = asnode.getName()
     input_type = asnode.getParameter('nodeType').getValue(0)
-    mx_shader_ref = material.getShaderRef("ShaderRef__"+shader_ref_name)    
+    mx_shader_ref = material.getShaderRef("ShaderRef__"+shader_ref_name)
     if not mx_shader_ref:
         mx_shader_ref = material.addShaderRef("ShaderRef__"+shader_ref_name, input_type)
         #~ Set shaderref parameter
         SetMaterialXShaderRefParams(mx_shader_ref, asnode)
+    mx_shader_ref.setType(shader_ref_type)
     return mx_shader_ref
 
 
