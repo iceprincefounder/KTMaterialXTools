@@ -96,20 +96,6 @@ class MaterialXBakeEditor(QtGui.QWidget):
         self.setLayout(mainLayout)
 
     # Public Functions --------------------------------------------------------
-    def OnAddPressed(self):
-        switch_node = SA.GetRefNode(self.__node, 'switch')
-        WidgetFactory = UI4.FormMaster.KatanaFactory.ParameterWidgetFactory
-        index = self.passes_layout.count() + 1
-        name = 'look_%i'%index
-        parameter = self.__node.getParameters().createChildString(name, name)
-        policy = UI4.FormMaster.CreateParameterPolicy(None, parameter)
-        widget = WidgetFactory.buildWidget(self, policy)
-        self.passes_layout.addWidget(widget)
-        self.__node.addInputPort(name)
-        self_node_port = self.__node.getSendPort(name)
-        switch_node_port = switch_node.addInputPort(name)
-        self_node_port.connect(switch_node_port)
-
     def onAddButtonPressed(self):
         switch_node = SA.GetRefNode(self.__node, 'switch')
         parameter = self.__node.getParameter('passes')
@@ -135,20 +121,3 @@ class MaterialXBakeEditor(QtGui.QWidget):
 
             self.__node.removeInputPort(name)
             switch_node.removeInputPort(name)
-
-    def OnRemovePressed(self):
-        return
-        switch_node = SA.GetRefNode(self.__node, 'switch')
-        layout = self.passes_layout
-        index = self.passes_layout.count()
-        if layout is not None:
-            item = layout.takeAt(index-1)
-            if item is not None:
-                widget = item.widget()
-                widget.deleteLater()
-                name = 'look_%i'%index
-                self.__node.removeInputPort(name)
-                switch_node.removeInputPort(name)
-                parameter = self.__node.getParameters().getChild(name)
-                self.__node.getParameters().deleteChild(parameter)
-        UI4.FormMaster.ClearCache()

@@ -263,8 +263,7 @@ _ExtraHints = {
     'MaterialXAssign.name': {
         'help':
             """
-            The root of scene graph location that MaterialX collation would ignore 
-            and mark the rest location.
+            NetworkMaterial name which located at '/root/materials/materialx/'
             """,
     },
     'MaterialXAssign.arnoldOperator': {
@@ -272,17 +271,19 @@ _ExtraHints = {
         'open': 'True',
         'help':
             """
+            Parameters of Arnold Operater MaterialX
             """,
     },
     'MaterialXAssign.arnoldOperator.selection': {
         'help':
             """
-            Specify path to save MaterialX file.
+            selection
             """,
     },
     'MaterialXAssign.arnoldOperator.look': {
         'help':
             """
+            look pass
             """,
     },
     'MaterialXAssign.arnoldOperator.filename': {
@@ -291,12 +292,13 @@ _ExtraHints = {
         'fileTypes':'mtlx',
         'help':
             """
-            Specify path to save MaterialX file.
+            Specify path to MaterialX file.
             """,
     },
     'MaterialXAssign.arnoldOperator.search_path': {
         'help':
             """
+            search path
             """,
     },
 }

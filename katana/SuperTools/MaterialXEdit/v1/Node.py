@@ -66,16 +66,14 @@ _ExtraHints = {
     'MaterialXEdit.saveAs': {
         'help':
             """
-            The root of scene graph location that MaterialX collation would ignore 
-            and mark the rest location.
+            The path we copy origin mtlx file to and edit.
             """,
     },
     'MaterialXEdit.material': {
         'widget': 'scenegraphLocation',
         'help':
             """
-            The root of scene graph location that MaterialX collation would ignore 
-            and mark the rest location.
+            Arnold operator materialx node scenegraphLocation.
             """,
     },
     'MaterialXEdit.save': {

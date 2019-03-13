@@ -11,7 +11,6 @@ class MaterialXEditor(QtGui.QWidget):
         self.listWidget = QtGui.QListView()
 
         self.editorWidget = QtGui.QWidget()
-        self.editorWidget.setMinimumWidth(250)
         main_lay.addWidget(self.listWidget)
         main_lay.addWidget(self.editorWidget)
 
