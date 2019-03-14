@@ -25,7 +25,8 @@ ARNOLD_SHADER_TYPE = {
 }
 
 def TraverseUpstreamNodes(asnode, sets):
-    log.info("Traverse current node -%s"%asnode)
+    asnode_name = asnode.getName()
+    log.info("Traverse current ArnoldShadingNode - %s"%asnode_name)
     up_nodes = getConnectedUpstreamNodes(asnode)
     for t_node in up_nodes:
         sets.append(t_node)
@@ -76,34 +77,35 @@ def getMaterialXParamsValue(asnode, param_name):
     Get MaterialX Standard Value from ArnoldShadingNode.
     """
     def _getType(asnode, param_name):
-        input_type = asnode.getParameter('nodeType').getValue(0)
+        shader_name = asnode.getParameter('nodeType').getValue(0)
         # Traverse the document tree in depth-first order.
         for nodedef_file in NODEDEFS_SEARCH_PATH:
             doc = mx.createDocument()
             mx.readFromXmlFile(doc, nodedef_file)
-            input_ptr = doc.getNodeDef(input_type)
-            if input_ptr:
-                input_param = input_ptr.getInput(param_name)
+            mx_nodedefs = doc.getNodeDef(shader_name)
+            if mx_nodedefs:
+                input_param = mx_nodedefs.getInput(param_name)
                 # Some params might not record in the NodeDefs.
                 if input_param:
                     return input_param.getType()
             else:
                 continue
     param_type = asnode.getParameter("parameters.%s.value"%param_name).getType()
-    input_type = _getType(asnode, param_name)
+    mx_input_type = _getType(asnode, param_name)
+
     # If parameter is katana type string
     if param_type == "string":
         return "string", asnode.getParameter("parameters.%s.value"%param_name).getValue(0)
     # If parameter is katana type number
     elif param_type == "number":
-        if input_type == "integer":
-            return "integer", asnode.getParameter("parameters.%s.value"%param_name).getValue(0)
-        elif input_type == "boolean":
+        if mx_input_type == "integer":
+            return "integer", int(asnode.getParameter("parameters.%s.value"%param_name).getValue(0))
+        elif mx_input_type == "boolean":
             if int(asnode.getParameter("parameters.%s.value"%param_name).getValue(0)):
                 return "boolean", "true"
             else:
                 return "boolean", "false"
-        elif input_type == "float":
+        elif mx_input_type == "float":
             return "float", asnode.getParameter("parameters.%s.value"%param_name).getValue(0)
         else:
             log.error("Not support unknown yet! -- %s : %s"%(asnode.getName(), param_name) )
@@ -116,26 +118,26 @@ def getMaterialXParamsValue(asnode, param_name):
         for child in param_value.getChildren():
             _tuple.append(child.getValue(0))
 
-        if input_type == "color2":
+        if mx_input_type == "color2":
             return "color2", mx.Color2(_tuple[0], _tuple[1])
-        elif input_type == "color3":
+        elif mx_input_type == "color3":
             return "color3", mx.Color3(_tuple[0], _tuple[1], _tuple[2])
-        elif input_type == "color4":
+        elif mx_input_type == "color4":
             return "color4", mx.Color4(_tuple[0], _tuple[1], _tuple[2], _tuple[3])
-        elif input_type == "vector2":
+        elif mx_input_type == "vector2":
             return "vector2", mx.Vector2(_tuple[0], _tuple[1])
-        elif input_type == "vector3":
+        elif mx_input_type == "vector3":
             print "##", asnode.getName(), param_name
             return "vector3", mx.Vector3(_tuple[0], _tuple[1], _tuple[2])
-        elif input_type == "vector4":
+        elif mx_input_type == "vector4":
             return "vector4", mx.Vector4(_tuple[0], _tuple[1], _tuple[2], _tuple[3])
-        elif input_type == "floatarray":
+        elif mx_input_type == "floatarray":
             log.error("Not support floatarray yet! -- %s : %s"%(asnode.getName(), param_name) )
             return "floatarray", ""
-        elif input_type == "color3array":
+        elif mx_input_type == "color3array":
             log.error("Not support color3array yet! -- %s : %s"%(asnode.getName(), param_name) )
             return "color3array", ""
-        elif input_type == "integerarray":
+        elif mx_input_type == "integerarray":
             log.error("Not support integerarray yet! -- %s : %s"%(asnode.getName(), param_name) )
             return "integerarray", ""
         else:
@@ -176,7 +178,6 @@ def SetMaterialXShaderRefParams(mxnode, asnode):
             if not isKatanaParamEnable(asnode, param_name):
                 continue
             _type, _value = getMaterialXParamsValue(asnode, param_name)
-
             # If type is unknown, skip!
             if _type:
                 bind_input = mxnode.addBindInput(param_name, _type)

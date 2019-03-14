@@ -38,7 +38,7 @@ class MaterialXBakeNode(NodegraphAPI.SuperTool):
         self.opScript_node = NodegraphAPI.CreateNode('OpScript', self)
         self.opScript_node.setName("MaterialAssignedAttr")
         self.opScript_node.getParameter('CEL').setExpression(
-            """'/root/world//*{ attr( "type" ) == "subdmesh"  or attr( "type" ) == "polymesh"}'""")
+            """'/root/world//*{ attr( "type" ) == "subdmesh"  or attr( "type" ) == "polymesh" or attr( "type" ) == "renderer procedural"}'""")
         self.opScript_node.getParameter('script.lua').setValue(self.__getMaterialAssignedOpScript(), 0)
 
         self.merge_node = NodegraphAPI.CreateNode('Merge', self)
@@ -208,7 +208,7 @@ class MaterialXBakeNode(NodegraphAPI.SuperTool):
 
             callback = []
             collations = []
-            location_types = ["subdmesh", "polymesh"]
+            location_types = ["subdmesh", "polymesh", "renderer procedural"]
             walkProducer(producer, callback, location_types)
             makeCollctions(producer, callback, collations)
             assignment_set = []
